@@ -20,6 +20,8 @@ namespace HeyDrawn_Money_Manager
             CustoMaterial = custoMaterial;
         }
 
+        public ProdutoVenda() : base() { }
+
         public override DataGridViewRow GetRow()
         {
             DataGridViewRow dataGridViewRow = new DataGridViewRow();
@@ -29,6 +31,7 @@ namespace HeyDrawn_Money_Manager
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Descricao });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Preco.ToString() });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = Lucro.ToString() });
+            dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Data.ToString() });
 
             return dataGridViewRow;
         }

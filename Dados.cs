@@ -87,6 +87,8 @@ namespace HeyDrawn_Money_Manager
         public SalesInfo MaisVendido {
             get
             {
+                if(Vendas.Count == 0) return new SalesInfo() { Nome = "Ainda não foi vendido nada", Valor = 0 };
+
                 var result = Vendas.GroupBy(venda => venda.Nome)
                     .Select(maisVendido => new { nome = maisVendido.Key, total = maisVendido.Count() })
                     .OrderByDescending(maisVendido => maisVendido.total).First();
@@ -98,6 +100,8 @@ namespace HeyDrawn_Money_Manager
         public SalesInfo MaisLucrado {
             get
             {
+                if (Vendas.Count == 0) return new SalesInfo() { Nome = "Ainda não foi vendido nada", Valor = 0 };
+
                 var result = Vendas.GroupBy(venda => venda.Nome)
                     .Select(maisLucrado => new { nome = maisLucrado.Key, valorTotal = maisLucrado.Sum(venda => venda.Lucro) })
                     .OrderByDescending(maisLucrado => maisLucrado.valorTotal).First();
@@ -204,50 +208,25 @@ namespace HeyDrawn_Money_Manager
             client.Set("/Stock", stockSemNull);
         }
         #endregion
-        public void LoadData(DataGridView comprasDatagrid, DataGridView vendasDatagrid, TabPage tabPage_planos, TabPage tabPage_planosTlm, DataGridView stockDatagrid)
-        {
-            vendasDatagrid.Rows.Clear();
-            vendasDatagrid.Rows.AddRange(Vendas.GetRows());
-
-            comprasDatagrid.Rows.Clear();
-            comprasDatagrid.Rows.AddRange(Compras.GetRows());
-
-            foreach (Plano plano in Planos)
-            {
-                ((ListBox)tabPage_planos.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
-            }
-
-            foreach (Plano plano in PlanosTlm)
-            {
-                ((ListBox)tabPage_planosTlm.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
-            }
-
-            stockDatagrid.Rows.Clear();
-            stockDatagrid.Rows.AddRange(Stock.GetRows());
-        }
 
         #region Vendas e Compras
-        public void addVenda(ProdutoVenda produto, DataGridView tabela)
+        public void addVenda(ProdutoVenda produto)
         {
             produto.ID = Vendas.Count;
-            client.SetAsync("Vendas/" + produto.ID, produto);
-            tabela.Rows.Add(produto.GetRow());
+            client.Set("Vendas/" + produto.ID, produto);
         }
-        public void addCompra(ProdutoCompra produto, DataGridView tabela)
+        public void addCompra(ProdutoCompra produto)
         {
             produto.ID = Compras.Count;
-            client.SetAsync("Compras/" + produto.ID, produto);
-            tabela.Rows.Add(produto.GetRow());
+            client.Set("Compras/" + produto.ID, produto);
         }
         #endregion
 
         #region Stock
 
-        public void addStock(ProdutoStock produto, DataGridView tabela) {
+        public void addStock(ProdutoStock produto) {
             produto.ID = Stock.Count;
-            client.SetAsync("Stock/" + produto.ID, produto);
-            tabela.Rows.Add(produto.GetRow());
-            MessageBox.Show("Produto adicionado com sucesso!");
+            client.Set("Stock/" + produto.ID, produto);
         }
 
         public ProdutoStock FindStock(string nomeStock)
@@ -282,7 +261,7 @@ namespace HeyDrawn_Money_Manager
         #region Tipos
         public void SetTipo(List<string> lista, string tipo)
         {
-            client.SetAsync(tipo, lista);
+            client.Set(tipo, lista);
         }
         #endregion
     }

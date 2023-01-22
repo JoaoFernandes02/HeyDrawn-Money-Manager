@@ -14,14 +14,18 @@ namespace HeyDrawn_Money_Manager
         public double Preco { get; set; }
         public double Envio { get; set; }
         public int ID { get; set; }
+        public Data Data { get; set; }
+
         public Produto(string nome, string descricao, double preco, double envio)
         {
             Nome = nome;
             Descricao = descricao;
             Preco = preco;
             Envio = envio;
+            Data = new Data();
         }
 
+        public Produto() { }
         public abstract DataGridViewRow GetRow();
     }
 }

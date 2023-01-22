@@ -41,10 +41,6 @@
             this.stock_comboBoxMaterial = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.table_Stock = new System.Windows.Forms.DataGridView();
-            this.stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_PlanosTlm = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -76,16 +72,16 @@
             this.planos_Lista2 = new System.Windows.Forms.ListBox();
             this.planos_Lista1 = new System.Windows.Forms.ListBox();
             this.tabPage_Compras = new System.Windows.Forms.TabPage();
+            this.compras_txtEnvioDividido = new System.Windows.Forms.NumericUpDown();
+            this.compras_txtEnvio = new System.Windows.Forms.NumericUpDown();
+            this.compras_txtPreco = new System.Windows.Forms.NumericUpDown();
             this.compras_txtTipo = new System.Windows.Forms.TextBox();
             this.compras_ProdutoMaisLucrado = new System.Windows.Forms.Label();
             this.compras_ProdutoMaisVendido = new System.Windows.Forms.Label();
             this.compras_txtLucro = new System.Windows.Forms.Label();
             this.compras_lblLucro = new System.Windows.Forms.Label();
             this.compras_btnConfirmar = new System.Windows.Forms.Button();
-            this.compras_txtEnvioDividido = new System.Windows.Forms.TextBox();
-            this.compras_txtEnvio = new System.Windows.Forms.TextBox();
             this.compras_txtDescricao = new System.Windows.Forms.TextBox();
-            this.compras_txtPreco = new System.Windows.Forms.TextBox();
             this.compras_lblTipo = new System.Windows.Forms.Label();
             this.compras_checkEnvioDividido = new System.Windows.Forms.CheckBox();
             this.compras_lblDescricao = new System.Windows.Forms.Label();
@@ -93,11 +89,12 @@
             this.compras_comboBoxTipos = new System.Windows.Forms.ComboBox();
             this.compras_lblEnvio = new System.Windows.Forms.Label();
             this.table_Compras = new System.Windows.Forms.DataGridView();
-            this.compras_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Vendas = new System.Windows.Forms.TabPage();
+            this.vendas_txtEnvioDividido = new System.Windows.Forms.NumericUpDown();
+            this.vendas_txtEnvioMaterial = new System.Windows.Forms.NumericUpDown();
+            this.vendas_txtMaterial = new System.Windows.Forms.NumericUpDown();
+            this.vendas_txtEnvio = new System.Windows.Forms.NumericUpDown();
+            this.vendas_txtPreco = new System.Windows.Forms.NumericUpDown();
             this.vendas_txtTipo = new System.Windows.Forms.TextBox();
             this.vendas_quantidadeStock = new System.Windows.Forms.Label();
             this.vendas_usarStock = new System.Windows.Forms.CheckBox();
@@ -107,17 +104,7 @@
             this.vendas_btnConfirmar = new System.Windows.Forms.Button();
             this.vendas_lblLucro = new System.Windows.Forms.Label();
             this.table_Vendas = new System.Windows.Forms.DataGridView();
-            this.vendas_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_txtEnvioDividido = new System.Windows.Forms.TextBox();
-            this.vendas_txtEnvioMaterial = new System.Windows.Forms.TextBox();
-            this.vendas_txtEnvio = new System.Windows.Forms.TextBox();
             this.vendas_txtDescricao = new System.Windows.Forms.TextBox();
-            this.vendas_txtPreco = new System.Windows.Forms.TextBox();
-            this.vendas_txtMaterial = new System.Windows.Forms.TextBox();
             this.vendas_lblTipo = new System.Windows.Forms.Label();
             this.vendas_checkEnvioDividido = new System.Windows.Forms.CheckBox();
             this.vendas_lblDescricao = new System.Windows.Forms.Label();
@@ -169,13 +156,37 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label_Menu = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.compras_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Stock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_Stock)).BeginInit();
             this.tabPage_PlanosTlm.SuspendLayout();
             this.tabPage_Planos.SuspendLayout();
             this.tabPage_Compras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtEnvioDividido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtEnvio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtPreco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_Compras)).BeginInit();
             this.tabPage_Vendas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvioDividido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvioMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtPreco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_Vendas)).BeginInit();
             this.form_Tab.SuspendLayout();
             this.tabPage_Definicoes.SuspendLayout();
@@ -230,7 +241,7 @@
             // stock_btnConfirmar
             // 
             this.stock_btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.stock_btnConfirmar.Location = new System.Drawing.Point(217, 293);
+            this.stock_btnConfirmar.Location = new System.Drawing.Point(184, 302);
             this.stock_btnConfirmar.Name = "stock_btnConfirmar";
             this.stock_btnConfirmar.Size = new System.Drawing.Size(196, 39);
             this.stock_btnConfirmar.TabIndex = 50;
@@ -242,21 +253,21 @@
             // 
             this.stock_txtEnvio.Location = new System.Drawing.Point(158, 230);
             this.stock_txtEnvio.Name = "stock_txtEnvio";
-            this.stock_txtEnvio.Size = new System.Drawing.Size(421, 22);
+            this.stock_txtEnvio.Size = new System.Drawing.Size(364, 22);
             this.stock_txtEnvio.TabIndex = 47;
             // 
             // stock_txtQuantidade
             // 
             this.stock_txtQuantidade.Location = new System.Drawing.Point(158, 162);
             this.stock_txtQuantidade.Name = "stock_txtQuantidade";
-            this.stock_txtQuantidade.Size = new System.Drawing.Size(421, 22);
+            this.stock_txtQuantidade.Size = new System.Drawing.Size(364, 22);
             this.stock_txtQuantidade.TabIndex = 44;
             // 
             // stock_txtPreco
             // 
             this.stock_txtPreco.Location = new System.Drawing.Point(158, 197);
             this.stock_txtPreco.Name = "stock_txtPreco";
-            this.stock_txtPreco.Size = new System.Drawing.Size(421, 22);
+            this.stock_txtPreco.Size = new System.Drawing.Size(364, 22);
             this.stock_txtPreco.TabIndex = 45;
             // 
             // label11
@@ -295,7 +306,7 @@
             this.stock_comboBoxMaterial.FormattingEnabled = true;
             this.stock_comboBoxMaterial.Location = new System.Drawing.Point(158, 124);
             this.stock_comboBoxMaterial.Name = "stock_comboBoxMaterial";
-            this.stock_comboBoxMaterial.Size = new System.Drawing.Size(421, 21);
+            this.stock_comboBoxMaterial.Size = new System.Drawing.Size(364, 21);
             this.stock_comboBoxMaterial.TabIndex = 43;
             // 
             // label14
@@ -315,36 +326,12 @@
             this.stock_ID,
             this.stock_Material,
             this.stock_Quantidade,
-            this.stock_Preco});
-            this.table_Stock.Location = new System.Drawing.Point(623, 0);
+            this.stock_Preco,
+            this.stock_Data});
+            this.table_Stock.Location = new System.Drawing.Point(557, 0);
             this.table_Stock.Name = "table_Stock";
-            this.table_Stock.Size = new System.Drawing.Size(448, 529);
+            this.table_Stock.Size = new System.Drawing.Size(514, 529);
             this.table_Stock.TabIndex = 1;
-            // 
-            // stock_ID
-            // 
-            this.stock_ID.HeaderText = "ID";
-            this.stock_ID.Name = "stock_ID";
-            this.stock_ID.ReadOnly = true;
-            // 
-            // stock_Material
-            // 
-            this.stock_Material.HeaderText = "Material";
-            this.stock_Material.Name = "stock_Material";
-            this.stock_Material.ReadOnly = true;
-            // 
-            // stock_Quantidade
-            // 
-            this.stock_Quantidade.HeaderText = "Quantidade";
-            this.stock_Quantidade.Name = "stock_Quantidade";
-            this.stock_Quantidade.ReadOnly = true;
-            // 
-            // stock_Preco
-            // 
-            this.stock_Preco.HeaderText = "Preço por Unidade";
-            this.stock_Preco.Name = "stock_Preco";
-            this.stock_Preco.ReadOnly = true;
-            this.stock_Preco.Width = 105;
             // 
             // tabPage_PlanosTlm
             // 
@@ -683,16 +670,16 @@
             // 
             // tabPage_Compras
             // 
+            this.tabPage_Compras.Controls.Add(this.compras_txtEnvioDividido);
+            this.tabPage_Compras.Controls.Add(this.compras_txtEnvio);
+            this.tabPage_Compras.Controls.Add(this.compras_txtPreco);
             this.tabPage_Compras.Controls.Add(this.compras_txtTipo);
             this.tabPage_Compras.Controls.Add(this.compras_ProdutoMaisLucrado);
             this.tabPage_Compras.Controls.Add(this.compras_ProdutoMaisVendido);
             this.tabPage_Compras.Controls.Add(this.compras_txtLucro);
             this.tabPage_Compras.Controls.Add(this.compras_lblLucro);
             this.tabPage_Compras.Controls.Add(this.compras_btnConfirmar);
-            this.tabPage_Compras.Controls.Add(this.compras_txtEnvioDividido);
-            this.tabPage_Compras.Controls.Add(this.compras_txtEnvio);
             this.tabPage_Compras.Controls.Add(this.compras_txtDescricao);
-            this.tabPage_Compras.Controls.Add(this.compras_txtPreco);
             this.tabPage_Compras.Controls.Add(this.compras_lblTipo);
             this.tabPage_Compras.Controls.Add(this.compras_checkEnvioDividido);
             this.tabPage_Compras.Controls.Add(this.compras_lblDescricao);
@@ -707,6 +694,31 @@
             this.tabPage_Compras.Size = new System.Drawing.Size(1066, 537);
             this.tabPage_Compras.TabIndex = 1;
             this.tabPage_Compras.UseVisualStyleBackColor = true;
+            // 
+            // compras_txtEnvioDividido
+            // 
+            this.compras_txtEnvioDividido.DecimalPlaces = 2;
+            this.compras_txtEnvioDividido.Location = new System.Drawing.Point(141, 167);
+            this.compras_txtEnvioDividido.Name = "compras_txtEnvioDividido";
+            this.compras_txtEnvioDividido.Size = new System.Drawing.Size(94, 22);
+            this.compras_txtEnvioDividido.TabIndex = 47;
+            this.compras_txtEnvioDividido.Visible = false;
+            // 
+            // compras_txtEnvio
+            // 
+            this.compras_txtEnvio.DecimalPlaces = 2;
+            this.compras_txtEnvio.Location = new System.Drawing.Point(141, 136);
+            this.compras_txtEnvio.Name = "compras_txtEnvio";
+            this.compras_txtEnvio.Size = new System.Drawing.Size(404, 22);
+            this.compras_txtEnvio.TabIndex = 46;
+            // 
+            // compras_txtPreco
+            // 
+            this.compras_txtPreco.DecimalPlaces = 2;
+            this.compras_txtPreco.Location = new System.Drawing.Point(141, 102);
+            this.compras_txtPreco.Name = "compras_txtPreco";
+            this.compras_txtPreco.Size = new System.Drawing.Size(404, 22);
+            this.compras_txtPreco.TabIndex = 45;
             // 
             // compras_txtTipo
             // 
@@ -768,34 +780,12 @@
             this.compras_btnConfirmar.UseVisualStyleBackColor = true;
             this.compras_btnConfirmar.Click += new System.EventHandler(this.compras_btnConfirmar_Click);
             // 
-            // compras_txtEnvioDividido
-            // 
-            this.compras_txtEnvioDividido.Location = new System.Drawing.Point(147, 163);
-            this.compras_txtEnvioDividido.Name = "compras_txtEnvioDividido";
-            this.compras_txtEnvioDividido.Size = new System.Drawing.Size(94, 22);
-            this.compras_txtEnvioDividido.TabIndex = 38;
-            this.compras_txtEnvioDividido.Visible = false;
-            // 
-            // compras_txtEnvio
-            // 
-            this.compras_txtEnvio.Location = new System.Drawing.Point(141, 137);
-            this.compras_txtEnvio.Name = "compras_txtEnvio";
-            this.compras_txtEnvio.Size = new System.Drawing.Size(404, 22);
-            this.compras_txtEnvio.TabIndex = 34;
-            // 
             // compras_txtDescricao
             // 
             this.compras_txtDescricao.Location = new System.Drawing.Point(141, 69);
             this.compras_txtDescricao.Name = "compras_txtDescricao";
             this.compras_txtDescricao.Size = new System.Drawing.Size(404, 22);
             this.compras_txtDescricao.TabIndex = 29;
-            // 
-            // compras_txtPreco
-            // 
-            this.compras_txtPreco.Location = new System.Drawing.Point(141, 104);
-            this.compras_txtPreco.Name = "compras_txtPreco";
-            this.compras_txtPreco.Size = new System.Drawing.Size(404, 22);
-            this.compras_txtPreco.TabIndex = 30;
             // 
             // compras_lblTipo
             // 
@@ -810,7 +800,7 @@
             // compras_checkEnvioDividido
             // 
             this.compras_checkEnvioDividido.AutoSize = true;
-            this.compras_checkEnvioDividido.Location = new System.Drawing.Point(41, 168);
+            this.compras_checkEnvioDividido.Location = new System.Drawing.Point(41, 172);
             this.compras_checkEnvioDividido.Name = "compras_checkEnvioDividido";
             this.compras_checkEnvioDividido.Size = new System.Drawing.Size(104, 17);
             this.compras_checkEnvioDividido.TabIndex = 37;
@@ -869,44 +859,24 @@
             this.compras_ID,
             this.compras_Tipo,
             this.compras_Descricao,
-            this.compras_Preco});
+            this.compras_Preco,
+            this.compras_Data});
             this.table_Compras.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.table_Compras.Location = new System.Drawing.Point(3, 328);
+            this.table_Compras.MultiSelect = false;
             this.table_Compras.Name = "table_Compras";
             this.table_Compras.ReadOnly = true;
+            this.table_Compras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.table_Compras.Size = new System.Drawing.Size(1060, 206);
             this.table_Compras.TabIndex = 1;
             // 
-            // compras_ID
-            // 
-            this.compras_ID.HeaderText = "ID";
-            this.compras_ID.Name = "compras_ID";
-            this.compras_ID.ReadOnly = true;
-            this.compras_ID.Width = 117;
-            // 
-            // compras_Tipo
-            // 
-            this.compras_Tipo.HeaderText = "Tipo";
-            this.compras_Tipo.Name = "compras_Tipo";
-            this.compras_Tipo.ReadOnly = true;
-            this.compras_Tipo.Width = 300;
-            // 
-            // compras_Descricao
-            // 
-            this.compras_Descricao.HeaderText = "Descrição";
-            this.compras_Descricao.Name = "compras_Descricao";
-            this.compras_Descricao.ReadOnly = true;
-            this.compras_Descricao.Width = 300;
-            // 
-            // compras_Preco
-            // 
-            this.compras_Preco.HeaderText = "Preço";
-            this.compras_Preco.Name = "compras_Preco";
-            this.compras_Preco.ReadOnly = true;
-            this.compras_Preco.Width = 300;
-            // 
             // tabPage_Vendas
             // 
+            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvioDividido);
+            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvioMaterial);
+            this.tabPage_Vendas.Controls.Add(this.vendas_txtMaterial);
+            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvio);
+            this.tabPage_Vendas.Controls.Add(this.vendas_txtPreco);
             this.tabPage_Vendas.Controls.Add(this.vendas_txtTipo);
             this.tabPage_Vendas.Controls.Add(this.vendas_quantidadeStock);
             this.tabPage_Vendas.Controls.Add(this.vendas_usarStock);
@@ -916,12 +886,7 @@
             this.tabPage_Vendas.Controls.Add(this.vendas_btnConfirmar);
             this.tabPage_Vendas.Controls.Add(this.vendas_lblLucro);
             this.tabPage_Vendas.Controls.Add(this.table_Vendas);
-            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvioDividido);
-            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvioMaterial);
-            this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvio);
             this.tabPage_Vendas.Controls.Add(this.vendas_txtDescricao);
-            this.tabPage_Vendas.Controls.Add(this.vendas_txtPreco);
-            this.tabPage_Vendas.Controls.Add(this.vendas_txtMaterial);
             this.tabPage_Vendas.Controls.Add(this.vendas_lblTipo);
             this.tabPage_Vendas.Controls.Add(this.vendas_checkEnvioDividido);
             this.tabPage_Vendas.Controls.Add(this.vendas_lblDescricao);
@@ -936,6 +901,48 @@
             this.tabPage_Vendas.Size = new System.Drawing.Size(1066, 537);
             this.tabPage_Vendas.TabIndex = 0;
             this.tabPage_Vendas.UseVisualStyleBackColor = true;
+            // 
+            // vendas_txtEnvioDividido
+            // 
+            this.vendas_txtEnvioDividido.DecimalPlaces = 2;
+            this.vendas_txtEnvioDividido.Location = new System.Drawing.Point(156, 226);
+            this.vendas_txtEnvioDividido.Name = "vendas_txtEnvioDividido";
+            this.vendas_txtEnvioDividido.Size = new System.Drawing.Size(94, 22);
+            this.vendas_txtEnvioDividido.TabIndex = 34;
+            this.vendas_txtEnvioDividido.Visible = false;
+            // 
+            // vendas_txtEnvioMaterial
+            // 
+            this.vendas_txtEnvioMaterial.DecimalPlaces = 2;
+            this.vendas_txtEnvioMaterial.Location = new System.Drawing.Point(156, 202);
+            this.vendas_txtEnvioMaterial.Name = "vendas_txtEnvioMaterial";
+            this.vendas_txtEnvioMaterial.Size = new System.Drawing.Size(94, 22);
+            this.vendas_txtEnvioMaterial.TabIndex = 33;
+            this.vendas_txtEnvioMaterial.Visible = false;
+            // 
+            // vendas_txtMaterial
+            // 
+            this.vendas_txtMaterial.DecimalPlaces = 2;
+            this.vendas_txtMaterial.Location = new System.Drawing.Point(141, 171);
+            this.vendas_txtMaterial.Name = "vendas_txtMaterial";
+            this.vendas_txtMaterial.Size = new System.Drawing.Size(404, 22);
+            this.vendas_txtMaterial.TabIndex = 32;
+            // 
+            // vendas_txtEnvio
+            // 
+            this.vendas_txtEnvio.DecimalPlaces = 2;
+            this.vendas_txtEnvio.Location = new System.Drawing.Point(141, 136);
+            this.vendas_txtEnvio.Name = "vendas_txtEnvio";
+            this.vendas_txtEnvio.Size = new System.Drawing.Size(404, 22);
+            this.vendas_txtEnvio.TabIndex = 31;
+            // 
+            // vendas_txtPreco
+            // 
+            this.vendas_txtPreco.DecimalPlaces = 2;
+            this.vendas_txtPreco.Location = new System.Drawing.Point(141, 102);
+            this.vendas_txtPreco.Name = "vendas_txtPreco";
+            this.vendas_txtPreco.Size = new System.Drawing.Size(404, 22);
+            this.vendas_txtPreco.TabIndex = 30;
             // 
             // vendas_txtTipo
             // 
@@ -1026,71 +1033,16 @@
             this.vendas_Tipo,
             this.vendas_Descricao,
             this.vendas_Preco,
-            this.vendas_Lucro});
+            this.vendas_Lucro,
+            this.vendas_Data});
             this.table_Vendas.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.table_Vendas.Location = new System.Drawing.Point(3, 328);
+            this.table_Vendas.MultiSelect = false;
             this.table_Vendas.Name = "table_Vendas";
             this.table_Vendas.ReadOnly = true;
+            this.table_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.table_Vendas.Size = new System.Drawing.Size(1060, 206);
             this.table_Vendas.TabIndex = 0;
-            // 
-            // vendas_ID
-            // 
-            this.vendas_ID.HeaderText = "ID";
-            this.vendas_ID.Name = "vendas_ID";
-            this.vendas_ID.ReadOnly = true;
-            this.vendas_ID.Width = 117;
-            // 
-            // vendas_Tipo
-            // 
-            this.vendas_Tipo.HeaderText = "Tipo";
-            this.vendas_Tipo.Name = "vendas_Tipo";
-            this.vendas_Tipo.ReadOnly = true;
-            this.vendas_Tipo.Width = 200;
-            // 
-            // vendas_Descricao
-            // 
-            this.vendas_Descricao.HeaderText = "Descrição";
-            this.vendas_Descricao.Name = "vendas_Descricao";
-            this.vendas_Descricao.ReadOnly = true;
-            this.vendas_Descricao.Width = 300;
-            // 
-            // vendas_Preco
-            // 
-            this.vendas_Preco.HeaderText = "Preço";
-            this.vendas_Preco.Name = "vendas_Preco";
-            this.vendas_Preco.ReadOnly = true;
-            this.vendas_Preco.Width = 200;
-            // 
-            // vendas_Lucro
-            // 
-            this.vendas_Lucro.HeaderText = "Lucro";
-            this.vendas_Lucro.Name = "vendas_Lucro";
-            this.vendas_Lucro.ReadOnly = true;
-            this.vendas_Lucro.Width = 200;
-            // 
-            // vendas_txtEnvioDividido
-            // 
-            this.vendas_txtEnvioDividido.Location = new System.Drawing.Point(156, 226);
-            this.vendas_txtEnvioDividido.Name = "vendas_txtEnvioDividido";
-            this.vendas_txtEnvioDividido.Size = new System.Drawing.Size(94, 22);
-            this.vendas_txtEnvioDividido.TabIndex = 21;
-            this.vendas_txtEnvioDividido.Visible = false;
-            // 
-            // vendas_txtEnvioMaterial
-            // 
-            this.vendas_txtEnvioMaterial.Location = new System.Drawing.Point(156, 201);
-            this.vendas_txtEnvioMaterial.Name = "vendas_txtEnvioMaterial";
-            this.vendas_txtEnvioMaterial.Size = new System.Drawing.Size(94, 22);
-            this.vendas_txtEnvioMaterial.TabIndex = 19;
-            this.vendas_txtEnvioMaterial.Visible = false;
-            // 
-            // vendas_txtEnvio
-            // 
-            this.vendas_txtEnvio.Location = new System.Drawing.Point(141, 137);
-            this.vendas_txtEnvio.Name = "vendas_txtEnvio";
-            this.vendas_txtEnvio.Size = new System.Drawing.Size(404, 22);
-            this.vendas_txtEnvio.TabIndex = 17;
             // 
             // vendas_txtDescricao
             // 
@@ -1098,20 +1050,6 @@
             this.vendas_txtDescricao.Name = "vendas_txtDescricao";
             this.vendas_txtDescricao.Size = new System.Drawing.Size(404, 22);
             this.vendas_txtDescricao.TabIndex = 10;
-            // 
-            // vendas_txtPreco
-            // 
-            this.vendas_txtPreco.Location = new System.Drawing.Point(141, 104);
-            this.vendas_txtPreco.Name = "vendas_txtPreco";
-            this.vendas_txtPreco.Size = new System.Drawing.Size(404, 22);
-            this.vendas_txtPreco.TabIndex = 11;
-            // 
-            // vendas_txtMaterial
-            // 
-            this.vendas_txtMaterial.Location = new System.Drawing.Point(141, 172);
-            this.vendas_txtMaterial.Name = "vendas_txtMaterial";
-            this.vendas_txtMaterial.Size = new System.Drawing.Size(404, 22);
-            this.vendas_txtMaterial.TabIndex = 15;
             // 
             // vendas_lblTipo
             // 
@@ -1803,6 +1741,116 @@
             this.label_Menu.Text = "Menu";
             this.label_Menu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // compras_ID
+            // 
+            this.compras_ID.HeaderText = "ID";
+            this.compras_ID.Name = "compras_ID";
+            this.compras_ID.ReadOnly = true;
+            this.compras_ID.Width = 117;
+            // 
+            // compras_Tipo
+            // 
+            this.compras_Tipo.HeaderText = "Tipo";
+            this.compras_Tipo.Name = "compras_Tipo";
+            this.compras_Tipo.ReadOnly = true;
+            this.compras_Tipo.Width = 265;
+            // 
+            // compras_Descricao
+            // 
+            this.compras_Descricao.HeaderText = "Descrição";
+            this.compras_Descricao.Name = "compras_Descricao";
+            this.compras_Descricao.ReadOnly = true;
+            this.compras_Descricao.Width = 265;
+            // 
+            // compras_Preco
+            // 
+            this.compras_Preco.HeaderText = "Preço";
+            this.compras_Preco.Name = "compras_Preco";
+            this.compras_Preco.ReadOnly = true;
+            this.compras_Preco.Width = 265;
+            // 
+            // compras_Data
+            // 
+            this.compras_Data.HeaderText = "Data";
+            this.compras_Data.Name = "compras_Data";
+            this.compras_Data.ReadOnly = true;
+            this.compras_Data.Width = 105;
+            // 
+            // vendas_ID
+            // 
+            this.vendas_ID.HeaderText = "ID";
+            this.vendas_ID.Name = "vendas_ID";
+            this.vendas_ID.ReadOnly = true;
+            this.vendas_ID.Width = 117;
+            // 
+            // vendas_Tipo
+            // 
+            this.vendas_Tipo.HeaderText = "Tipo";
+            this.vendas_Tipo.Name = "vendas_Tipo";
+            this.vendas_Tipo.ReadOnly = true;
+            this.vendas_Tipo.Width = 175;
+            // 
+            // vendas_Descricao
+            // 
+            this.vendas_Descricao.HeaderText = "Descrição";
+            this.vendas_Descricao.Name = "vendas_Descricao";
+            this.vendas_Descricao.ReadOnly = true;
+            this.vendas_Descricao.Width = 260;
+            // 
+            // vendas_Preco
+            // 
+            this.vendas_Preco.HeaderText = "Preço";
+            this.vendas_Preco.Name = "vendas_Preco";
+            this.vendas_Preco.ReadOnly = true;
+            this.vendas_Preco.Width = 175;
+            // 
+            // vendas_Lucro
+            // 
+            this.vendas_Lucro.HeaderText = "Lucro";
+            this.vendas_Lucro.Name = "vendas_Lucro";
+            this.vendas_Lucro.ReadOnly = true;
+            this.vendas_Lucro.Width = 175;
+            // 
+            // vendas_Data
+            // 
+            this.vendas_Data.HeaderText = "Data";
+            this.vendas_Data.Name = "vendas_Data";
+            this.vendas_Data.ReadOnly = true;
+            this.vendas_Data.Width = 115;
+            // 
+            // stock_ID
+            // 
+            this.stock_ID.HeaderText = "ID";
+            this.stock_ID.Name = "stock_ID";
+            this.stock_ID.ReadOnly = true;
+            // 
+            // stock_Material
+            // 
+            this.stock_Material.HeaderText = "Material";
+            this.stock_Material.Name = "stock_Material";
+            this.stock_Material.ReadOnly = true;
+            this.stock_Material.Width = 90;
+            // 
+            // stock_Quantidade
+            // 
+            this.stock_Quantidade.HeaderText = "Quantidade";
+            this.stock_Quantidade.Name = "stock_Quantidade";
+            this.stock_Quantidade.ReadOnly = true;
+            this.stock_Quantidade.Width = 90;
+            // 
+            // stock_Preco
+            // 
+            this.stock_Preco.HeaderText = "Preço por Unidade";
+            this.stock_Preco.Name = "stock_Preco";
+            this.stock_Preco.ReadOnly = true;
+            this.stock_Preco.Width = 90;
+            // 
+            // stock_Data
+            // 
+            this.stock_Data.HeaderText = "Data";
+            this.stock_Data.Name = "stock_Data";
+            this.stock_Data.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1825,9 +1873,17 @@
             this.tabPage_Planos.PerformLayout();
             this.tabPage_Compras.ResumeLayout(false);
             this.tabPage_Compras.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtEnvioDividido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtEnvio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compras_txtPreco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_Compras)).EndInit();
             this.tabPage_Vendas.ResumeLayout(false);
             this.tabPage_Vendas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvioDividido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvioMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtEnvio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendas_txtPreco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_Vendas)).EndInit();
             this.form_Tab.ResumeLayout(false);
             this.tabPage_Definicoes.ResumeLayout(false);
@@ -1894,10 +1950,7 @@
 		private System.Windows.Forms.Label compras_txtLucro;
 		private System.Windows.Forms.Label compras_lblLucro;
 		private System.Windows.Forms.Button compras_btnConfirmar;
-		private System.Windows.Forms.TextBox compras_txtEnvioDividido;
-		private System.Windows.Forms.TextBox compras_txtEnvio;
 		private System.Windows.Forms.TextBox compras_txtDescricao;
-		private System.Windows.Forms.TextBox compras_txtPreco;
 		private System.Windows.Forms.Label compras_lblTipo;
 		private System.Windows.Forms.CheckBox compras_checkEnvioDividido;
 		private System.Windows.Forms.Label compras_lblDescricao;
@@ -1911,12 +1964,7 @@
 		private System.Windows.Forms.Button vendas_btnConfirmar;
 		private System.Windows.Forms.Label vendas_lblLucro;
 		private System.Windows.Forms.DataGridView table_Vendas;
-		private System.Windows.Forms.TextBox vendas_txtEnvioDividido;
-		private System.Windows.Forms.TextBox vendas_txtEnvioMaterial;
-		private System.Windows.Forms.TextBox vendas_txtEnvio;
 		private System.Windows.Forms.TextBox vendas_txtDescricao;
-		private System.Windows.Forms.TextBox vendas_txtPreco;
-		private System.Windows.Forms.TextBox vendas_txtMaterial;
 		private System.Windows.Forms.Label vendas_lblTipo;
 		private System.Windows.Forms.CheckBox vendas_checkEnvioDividido;
 		private System.Windows.Forms.Label vendas_lblDescricao;
@@ -1967,19 +2015,6 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Preco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn compras_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Preco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Preco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Lucro;
         private System.Windows.Forms.ColorDialog colorDialog;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.TabPage tabPage_ToDoList;
@@ -1988,6 +2023,30 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox toDoList_Lista;
+        private System.Windows.Forms.NumericUpDown vendas_txtPreco;
+        private System.Windows.Forms.NumericUpDown vendas_txtEnvioDividido;
+        private System.Windows.Forms.NumericUpDown vendas_txtEnvioMaterial;
+        private System.Windows.Forms.NumericUpDown vendas_txtMaterial;
+        private System.Windows.Forms.NumericUpDown vendas_txtEnvio;
+        private System.Windows.Forms.NumericUpDown compras_txtEnvioDividido;
+        private System.Windows.Forms.NumericUpDown compras_txtEnvio;
+        private System.Windows.Forms.NumericUpDown compras_txtPreco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compras_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compras_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Lucro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Data;
     }
 }
 

@@ -52,14 +52,11 @@ namespace HeyDrawn_Money_Manager
 
         #region Form
         
-
-
-        
         private void Form1_Load(object sender, EventArgs e)
         {
             definicoes_btnReset_Click(null, null);
 
-            dados.LoadData(table_Compras, table_Vendas, tabPage_Planos, tabPage_PlanosTlm, table_Stock);
+            LoadData();
             atualizarLabels();
 
             vendas_comboBoxTipos.Items.Add("Custom");
@@ -79,6 +76,28 @@ namespace HeyDrawn_Money_Manager
                 foreach (string str in dados.TiposStock)
                     if (str != null)
                         stock_comboBoxMaterial.Items.Add(str);
+        }
+
+        public void LoadData()
+        {
+            table_Vendas.Rows.Clear();
+            table_Vendas.Rows.AddRange(dados.Vendas.GetRows());
+
+            table_Compras.Rows.Clear();
+            table_Compras.Rows.AddRange(dados.Compras.GetRows());
+
+            foreach (Plano plano in dados.Planos)
+            {
+                ((ListBox)tabPage_Planos.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
+            }
+
+            foreach (Plano plano in dados.PlanosTlm)
+            {
+                ((ListBox)tabPage_PlanosTlm.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
+            }
+
+            table_Stock.Rows.Clear();
+            table_Stock.Rows.AddRange(dados.Stock.GetRows());
         }
         private void ChangeTab(object sender, EventArgs e)
         {
@@ -111,6 +130,7 @@ namespace HeyDrawn_Money_Manager
                 if (control is TextBox) control.Text = "";
                 if (control is ComboBox) ((ComboBox)control).SelectedIndex = -1;
                 if (control is CheckBox) ((CheckBox)control).Checked = false;
+                if (control is NumericUpDown) ((NumericUpDown)control).Value = 0;
             }
         }
         #endregion
@@ -125,8 +145,8 @@ namespace HeyDrawn_Money_Manager
             vendas_checkEnvioDividido.Visible = vendas_checkEnvioMaterial.Checked;
 
             //limpa o texto
-            vendas_txtEnvioMaterial.Text = "";
-            vendas_txtEnvioDividido.Text = "";
+            vendas_txtEnvioMaterial.Value = 0;
+            vendas_txtEnvioDividido.Value = 0;
             vendas_checkEnvioDividido.Checked = false;
         }
         private void check_EnvioDividido_CheckedChanged(object sender, EventArgs e)
@@ -155,109 +175,148 @@ namespace HeyDrawn_Money_Manager
             //Controlos que não podem ter texto vazio
             List<Control> controls = new List<Control>(){ vendas_comboBoxTipos, vendas_txtDescricao, vendas_txtPreco, vendas_txtEnvio };
 
-            if (vendas_checkEnvioMaterial.Checked) controls.Add(vendas_txtEnvioMaterial);
-            if (vendas_checkEnvioDividido.Checked) controls.Add(vendas_txtEnvioDividido);
-            if (vendas_comboBoxTipos.SelectedIndex == 0) controls.Add(vendas_txtTipo);
+            //Caso as opções estejam selecionadas adiciona os respetivos
+            //controlos à lista de controlos que não podem tar vazios
+            
+                //Custo de envio de material
+                if (vendas_checkEnvioMaterial.Checked) controls.Add(vendas_txtEnvioMaterial);
+                
+                //Envio dividido de material
+                if (vendas_checkEnvioDividido.Checked) controls.Add(vendas_txtEnvioDividido);
+                
+                //Tipo de produto custom
+                if (vendas_comboBoxTipos.SelectedIndex == 0) controls.Add(vendas_txtTipo);
 
+            //Verifica se todos os controlos têm texto
             if (!HasText(controls))
             {
                 MessageBox.Show("Preencha todos os campos!");
                 return;
             }
 
-            double preco;
-            double envio;
-            double custoMateriais;
-            double envioMateriaisTotal = 0;
-            int envioDividido = 1;
+            //Preço do produto
+            double preco = (double)vendas_txtPreco.Value;
 
-            bool formatoValido = double.TryParse(vendas_txtPreco.Text.Trim().Replace('.', ','), out preco) &
-                                double.TryParse(vendas_txtEnvio.Text.Trim().Replace('.', ','), out envio) &
-                                double.TryParse(vendas_txtMaterial.Text.Trim().Replace('.', ','), out custoMateriais);
+            //Preço do envio
+            double envio = (double)vendas_txtEnvio.Value;
 
-            if (vendas_checkEnvioMaterial.Checked) formatoValido = formatoValido & double.TryParse(vendas_txtEnvioMaterial.Text.Trim().Replace('.', ','), out envioMateriaisTotal);
-            if (vendas_checkEnvioDividido.Checked) formatoValido = formatoValido & int.TryParse(vendas_txtEnvioDividido.Text.Trim().Replace('.', ','), out envioDividido);
+            //Custo dos materiais (sem envio)
+            double custoMateriais = (double)vendas_txtMaterial.Value;
 
-            if (!formatoValido)
-            {
-                MessageBox.Show("Preencha os campos corretamente!");
-                return;
-            }
+            //Envio total dos materiais
+            double envioMateriaisTotal = (vendas_checkEnvioMaterial.Checked) ? (double)vendas_txtEnvioMaterial.Value : 0;
+            
+            //Quantiade de produtos (materiais) dentro do envio
+            int envioDividido = (vendas_checkEnvioDividido.Checked) ? (int)vendas_txtEnvioDividido.Value : 1;
 
+            //Nome do produto
             String nome = (vendas_comboBoxTipos.SelectedIndex == 0)?vendas_txtTipo.Text:vendas_comboBoxTipos.Text;
+            
+            //Descrição do produto
             String descricao = vendas_txtDescricao.Text;
+            
+            //Envio do material
             double envioMaterial = envioMateriaisTotal / envioDividido;
+            
+            //Custo total do material
             double custoMaterialTotal = custoMateriais + envioMaterial;
 
+            //Cria o produto de venda
             ProdutoVenda venda = new ProdutoVenda(nome, descricao, preco, envio, custoMaterialTotal);
-            dados.addVenda(venda, table_Vendas);
             
+            //Adiciona o produto de venda aos dados
+            dados.addVenda(venda);
+            
+            //Cria um produto de material caso
+            //não se esteja a usar o stock e exista custo de material
             if (custoMaterialTotal > 0 && !vendas_usarStock.Checked)
             {
                 ProdutoCompra material = new ProdutoCompra("Materiais para " + nome, descricao, custoMateriais, envioMaterial);
-                dados.addCompra(material, table_Compras);
+                dados.addCompra(material);
+                table_Compras.Rows.Add(material.GetRow());
             }
+            //Remove 1 unidade de stock caso esteja a ser usado
             else if(vendas_usarStock.Checked)
             {
                 dados.RemoverStock(dados.FindStock(vendas_comboBoxTipos.Text));
                 dados.RefreshStock(table_Stock);
             }
 
+            //Atualiza as labels, remove o texto dos controlos
+            //e adiciona o produto à tabela
             atualizarLabels();
             clearText(tabPage_Vendas);
+            table_Vendas.Rows.Add(venda.GetRow());
 
         }
         private void compras_btnConfirmar_Click(object sender, EventArgs e)
         {
             //Controlos que não podem ter texto vazio
-            List<Control> controls = new List<Control>(){ compras_comboBoxTipos, compras_txtDescricao, compras_txtPreco, compras_txtEnvio };
+            List<Control> controls = new List<Control>() { compras_comboBoxTipos, compras_txtDescricao, compras_txtPreco, compras_txtEnvio };
 
-            if (compras_checkEnvioDividido.Checked) controls.Append(compras_txtEnvioDividido);
+            //Caso as opções estejam selecionadas adiciona os respetivos
+            //controlos à lista de controlos que não podem tar vazios
+
+            //Envio dividido de material
+            if (compras_checkEnvioDividido.Checked) controls.Add(compras_txtEnvioDividido);
+
+            //Tipo de produto custom
             if (compras_comboBoxTipos.SelectedIndex == 0) controls.Add(compras_txtTipo);
 
+            //Verifica se todos os controlos têm texto
             if (!HasText(controls))
             {
                 MessageBox.Show("Preencha todos os campos!");
                 return;
             }
 
-            double preco;
-            double envio;
-            int envioDividido = 1;
+            //Preço do produto
+            double preco = (double)compras_txtPreco.Value;
 
-            bool formatoValido = double.TryParse(compras_txtPreco.Text.Trim().Replace('.', ','), out preco) &
-                                double.TryParse(compras_txtEnvio.Text.Trim().Replace('.', ','), out envio);
+            //Preço do envio total
+            double envioTotal = (double)compras_txtEnvio.Value;
 
-            if (vendas_checkEnvioDividido.Checked) formatoValido = formatoValido & int.TryParse(compras_txtEnvioDividido.Text.Trim().Replace('.', ','), out envioDividido);
+            //Quantiade de produtos (materiais) dentro do envio
+            int envioDividido = (compras_checkEnvioDividido.Checked) ? (int)compras_txtEnvioDividido.Value : 1;
 
-            if (!formatoValido)
-            {
-                MessageBox.Show("Preencha os campos corretamente!");
-                return;
-            }
+            //Preço do envio
+            double envio = envioTotal / envioDividido;
 
+            //Nome do produto
             String nome = (compras_comboBoxTipos.SelectedIndex == 0) ? compras_txtTipo.Text : compras_comboBoxTipos.Text;
+
+            //Descrição do produto
             String descricao = compras_txtDescricao.Text;
-            double envioTotal = envio / envioDividido;
 
-            ProdutoCompra produto = new ProdutoCompra(nome,descricao,preco,envioTotal);
-            dados.addCompra(produto, table_Compras);
+            //Cria o produto de venda
+            ProdutoCompra compra = new ProdutoCompra(nome, descricao, preco, envio);
 
+            //Adiciona o produto de venda aos dados
+            dados.addCompra(compra);
+
+            //Atualiza as labels, remove o texto dos controlos
+            //e adiciona o produto à tabela
             atualizarLabels();
             clearText(tabPage_Compras);
-
-            
+            table_Compras.Rows.Add(compra.GetRow());
         }
         private void atualizarLabels()
         {
-            vendas_txtLucro.Text = dados.Lucro.ToString() + "€";
-            compras_txtLucro.Text = dados.Lucro.ToString() + "€";
-            if (dados.Lucro > 0)
+            double lucro = dados.Lucro;
+            int vendasCount = dados.Vendas.Count;
+            double maisVendidoValor = dados.MaisVendido.Valor;
+            string maisVendidoNome = dados.MaisVendido.Nome;
+            double maisLucradoValor = dados.MaisLucrado.Valor;
+            string maisLucradoNome = dados.MaisVendido.Nome;
+
+            vendas_txtLucro.Text = lucro.ToString() + "€";
+            compras_txtLucro.Text = lucro.ToString() + "€";
+            if (lucro > 0)
             {
                 vendas_txtLucro.ForeColor = Color.Green;
                 compras_txtLucro.ForeColor = Color.Green;
             }
-            else if (dados.Lucro < 0)
+            else if (lucro < 0)
             {
                 vendas_txtLucro.ForeColor = Color.Red;
                 compras_txtLucro.ForeColor = Color.Red;
@@ -268,13 +327,14 @@ namespace HeyDrawn_Money_Manager
                 compras_txtLucro.ForeColor = Color.Orange;
             }
 
-            if (dados.Vendas.Count == 0) return;
+            if (vendasCount == 0) return;
 
-            vendas_ProdutoMaisVendido.Text = "Produto Mais Vendido: " + dados.MaisVendido.Nome + " (" + dados.MaisVendido.Valor + ")";
-            vendas_ProdutoMaisLucrado.Text = "Produto Mais Lucrado: " + dados.MaisLucrado.Nome + " (" + dados.MaisLucrado.Valor + "€)";
 
-            compras_ProdutoMaisVendido.Text = "Produto Mais Vendido: " + dados.MaisVendido.Nome + " (" + dados.MaisVendido.Valor + ")";
-            compras_ProdutoMaisLucrado.Text = "Produto Mais Lucrado: " + dados.MaisLucrado.Nome + " (" + dados.MaisLucrado.Valor + "€)";
+            vendas_ProdutoMaisVendido.Text = "Produto Mais Vendido: " + maisVendidoNome + " (" + maisVendidoValor + ")";
+            vendas_ProdutoMaisLucrado.Text = "Produto Mais Lucrado: " + maisLucradoNome + " (" + maisLucradoValor + "€)";
+
+            compras_ProdutoMaisVendido.Text = "Produto Mais Vendido: " + maisVendidoNome + " (" + maisVendidoValor + ")";
+            compras_ProdutoMaisLucrado.Text = "Produto Mais Lucrado: " + maisLucradoNome + " (" + maisLucradoValor + "€)";
         }
         private void vendas_comboBoxTipos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -494,11 +554,12 @@ namespace HeyDrawn_Money_Manager
             double envioTotal = envio / envioDividido;
 
             ProdutoStock produto = new ProdutoStock(nome, "stock", preco, envioTotal, quantidade);
-            dados.addStock(produto, table_Stock);
+            dados.addStock(produto);
 
             clearText(tabPage_Stock);
 
             atualizarLabels();
+            table_Stock.Rows.Add(produto.GetRow());
         }
         #endregion
 
@@ -577,6 +638,6 @@ namespace HeyDrawn_Money_Manager
 
             ((ListBox)listBox).Items.Remove(((ListBox)listBox).SelectedItem);
         }
-        #endregion        
+        #endregion
     }
 }

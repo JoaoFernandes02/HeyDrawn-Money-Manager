@@ -13,7 +13,7 @@ namespace HeyDrawn_Money_Manager
         {
             double total = 0;
             foreach(ProdutoCompra produto in this)
-                if(!produto.Nome.StartsWith("Materiais")) total += produto.Preco;
+                if(!produto.Nome.StartsWith("Materiais")) total += produto.Preco + produto.Envio;
 
             return total;
         }

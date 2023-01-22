@@ -11,6 +11,8 @@ namespace HeyDrawn_Money_Manager
     {
         public ProdutoCompra(string nome, string descricao, double preco, double envio) : base(nome, descricao, preco, envio){}
 
+        public ProdutoCompra() : base() { }
+
         public override DataGridViewRow GetRow()
         {
             DataGridViewRow dataGridViewRow = new DataGridViewRow();
@@ -19,6 +21,7 @@ namespace HeyDrawn_Money_Manager
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Nome });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Descricao });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Preco.ToString() });
+            dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Data.ToString() });
 
             return dataGridViewRow;
         }

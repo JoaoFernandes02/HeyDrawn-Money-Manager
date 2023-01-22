@@ -20,6 +20,8 @@ namespace HeyDrawn_Money_Manager
         {
             Quantidade = quantidade;
         }
+
+        public ProdutoStock() : base() { }
         public override DataGridViewRow GetRow()
         {
             DataGridViewRow dataGridViewRow = new DataGridViewRow();
@@ -28,6 +30,7 @@ namespace HeyDrawn_Money_Manager
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Nome });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = Quantidade.ToString() });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = PrecoUnidade.ToString() });
+            dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Data.ToString() });
 
             return dataGridViewRow;
         }

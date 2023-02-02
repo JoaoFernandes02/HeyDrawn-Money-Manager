@@ -41,6 +41,11 @@
             this.stock_comboBoxMaterial = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.table_Stock = new System.Windows.Forms.DataGridView();
+            this.stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_PlanosTlm = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,10 +57,10 @@
             this.planosTlm_txtNovoPlano = new System.Windows.Forms.TextBox();
             this.planosTlm_btnNext = new System.Windows.Forms.Button();
             this.planosTlm_btnPrevious = new System.Windows.Forms.Button();
-            this.planosTlm_Lista4 = new System.Windows.Forms.ListBox();
-            this.planosTlm_Lista3 = new System.Windows.Forms.ListBox();
-            this.planosTlm_Lista2 = new System.Windows.Forms.ListBox();
-            this.planosTlm_Lista1 = new System.Windows.Forms.ListBox();
+            this.planosTlm_ListaEnviados = new System.Windows.Forms.ListBox();
+            this.planosTlm_ListaPronto = new System.Windows.Forms.ListBox();
+            this.planosTlm_ListaAtivo = new System.Windows.Forms.ListBox();
+            this.planosTlm_ListaPendente = new System.Windows.Forms.ListBox();
             this.tabPage_Planos = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,12 +70,12 @@
             this.planos_btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.planos_txtNovoPlano = new System.Windows.Forms.TextBox();
-            this.planos_Lista4 = new System.Windows.Forms.ListBox();
+            this.planos_ListaEnviados = new System.Windows.Forms.ListBox();
             this.planos_btnNext = new System.Windows.Forms.Button();
             this.planos_btnPrevious = new System.Windows.Forms.Button();
-            this.planos_Lista3 = new System.Windows.Forms.ListBox();
-            this.planos_Lista2 = new System.Windows.Forms.ListBox();
-            this.planos_Lista1 = new System.Windows.Forms.ListBox();
+            this.planos_ListaPronto = new System.Windows.Forms.ListBox();
+            this.planos_ListaAtivo = new System.Windows.Forms.ListBox();
+            this.planos_ListaPendente = new System.Windows.Forms.ListBox();
             this.tabPage_Compras = new System.Windows.Forms.TabPage();
             this.compras_txtEnvioDividido = new System.Windows.Forms.NumericUpDown();
             this.compras_txtEnvio = new System.Windows.Forms.NumericUpDown();
@@ -89,6 +94,11 @@
             this.compras_comboBoxTipos = new System.Windows.Forms.ComboBox();
             this.compras_lblEnvio = new System.Windows.Forms.Label();
             this.table_Compras = new System.Windows.Forms.DataGridView();
+            this.compras_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compras_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Vendas = new System.Windows.Forms.TabPage();
             this.vendas_txtEnvioDividido = new System.Windows.Forms.NumericUpDown();
             this.vendas_txtEnvioMaterial = new System.Windows.Forms.NumericUpDown();
@@ -104,6 +114,12 @@
             this.vendas_btnConfirmar = new System.Windows.Forms.Button();
             this.vendas_lblLucro = new System.Windows.Forms.Label();
             this.table_Vendas = new System.Windows.Forms.DataGridView();
+            this.vendas_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendas_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendas_txtDescricao = new System.Windows.Forms.TextBox();
             this.vendas_lblTipo = new System.Windows.Forms.Label();
             this.vendas_checkEnvioDividido = new System.Windows.Forms.CheckBox();
@@ -133,11 +149,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage_ToDoList = new System.Windows.Forms.TabPage();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.toDoList_Lista = new System.Windows.Forms.ListBox();
             this.panel_Barra = new System.Windows.Forms.Panel();
             this.label_Logo = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -155,23 +166,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label_Menu = new System.Windows.Forms.Label();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.compras_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compras_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendas_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apontamentos_Text = new System.Windows.Forms.TextBox();
+            this.apontamentos_guardar = new System.Windows.Forms.Button();
             this.tabPage_Stock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_Stock)).BeginInit();
             this.tabPage_PlanosTlm.SuspendLayout();
@@ -333,6 +329,39 @@
             this.table_Stock.Size = new System.Drawing.Size(514, 529);
             this.table_Stock.TabIndex = 1;
             // 
+            // stock_ID
+            // 
+            this.stock_ID.HeaderText = "ID";
+            this.stock_ID.Name = "stock_ID";
+            this.stock_ID.ReadOnly = true;
+            // 
+            // stock_Material
+            // 
+            this.stock_Material.HeaderText = "Material";
+            this.stock_Material.Name = "stock_Material";
+            this.stock_Material.ReadOnly = true;
+            this.stock_Material.Width = 90;
+            // 
+            // stock_Quantidade
+            // 
+            this.stock_Quantidade.HeaderText = "Quantidade";
+            this.stock_Quantidade.Name = "stock_Quantidade";
+            this.stock_Quantidade.ReadOnly = true;
+            this.stock_Quantidade.Width = 90;
+            // 
+            // stock_Preco
+            // 
+            this.stock_Preco.HeaderText = "Preço por Unidade";
+            this.stock_Preco.Name = "stock_Preco";
+            this.stock_Preco.ReadOnly = true;
+            this.stock_Preco.Width = 90;
+            // 
+            // stock_Data
+            // 
+            this.stock_Data.HeaderText = "Data";
+            this.stock_Data.Name = "stock_Data";
+            this.stock_Data.ReadOnly = true;
+            // 
             // tabPage_PlanosTlm
             // 
             this.tabPage_PlanosTlm.Controls.Add(this.label7);
@@ -345,10 +374,10 @@
             this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_txtNovoPlano);
             this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_btnNext);
             this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_btnPrevious);
-            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_Lista4);
-            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_Lista3);
-            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_Lista2);
-            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_Lista1);
+            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_ListaEnviados);
+            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_ListaPronto);
+            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_ListaAtivo);
+            this.tabPage_PlanosTlm.Controls.Add(this.planosTlm_ListaPendente);
             this.tabPage_PlanosTlm.Location = new System.Drawing.Point(4, 5);
             this.tabPage_PlanosTlm.Name = "tabPage_PlanosTlm";
             this.tabPage_PlanosTlm.Padding = new System.Windows.Forms.Padding(3);
@@ -442,7 +471,7 @@
             this.planosTlm_btnNext.Tag = "1";
             this.planosTlm_btnNext.Text = "->";
             this.planosTlm_btnNext.UseVisualStyleBackColor = true;
-            this.planosTlm_btnNext.Click += new System.EventHandler(this.moverItemListboxPlanosTlm);
+            this.planosTlm_btnNext.Click += new System.EventHandler(this.planosTlm_btnMover_Click);
             // 
             // planosTlm_btnPrevious
             // 
@@ -453,51 +482,55 @@
             this.planosTlm_btnPrevious.Tag = "-1";
             this.planosTlm_btnPrevious.Text = "<-";
             this.planosTlm_btnPrevious.UseVisualStyleBackColor = true;
-            this.planosTlm_btnPrevious.Click += new System.EventHandler(this.moverItemListboxPlanosTlm);
+            this.planosTlm_btnPrevious.Click += new System.EventHandler(this.planosTlm_btnMover_Click);
             // 
-            // planosTlm_Lista4
+            // planosTlm_ListaEnviados
             // 
-            this.planosTlm_Lista4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planosTlm_Lista4.FormattingEnabled = true;
-            this.planosTlm_Lista4.HorizontalScrollbar = true;
-            this.planosTlm_Lista4.ItemHeight = 21;
-            this.planosTlm_Lista4.Location = new System.Drawing.Point(778, 52);
-            this.planosTlm_Lista4.Name = "planosTlm_Lista4";
-            this.planosTlm_Lista4.Size = new System.Drawing.Size(189, 382);
-            this.planosTlm_Lista4.TabIndex = 10;
+            this.planosTlm_ListaEnviados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planosTlm_ListaEnviados.FormattingEnabled = true;
+            this.planosTlm_ListaEnviados.HorizontalScrollbar = true;
+            this.planosTlm_ListaEnviados.ItemHeight = 21;
+            this.planosTlm_ListaEnviados.Location = new System.Drawing.Point(778, 52);
+            this.planosTlm_ListaEnviados.Name = "planosTlm_ListaEnviados";
+            this.planosTlm_ListaEnviados.Size = new System.Drawing.Size(189, 382);
+            this.planosTlm_ListaEnviados.TabIndex = 10;
+            this.planosTlm_ListaEnviados.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
             // 
-            // planosTlm_Lista3
+            // planosTlm_ListaPronto
             // 
-            this.planosTlm_Lista3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planosTlm_Lista3.FormattingEnabled = true;
-            this.planosTlm_Lista3.HorizontalScrollbar = true;
-            this.planosTlm_Lista3.ItemHeight = 21;
-            this.planosTlm_Lista3.Location = new System.Drawing.Point(551, 52);
-            this.planosTlm_Lista3.Name = "planosTlm_Lista3";
-            this.planosTlm_Lista3.Size = new System.Drawing.Size(189, 382);
-            this.planosTlm_Lista3.TabIndex = 9;
+            this.planosTlm_ListaPronto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planosTlm_ListaPronto.FormattingEnabled = true;
+            this.planosTlm_ListaPronto.HorizontalScrollbar = true;
+            this.planosTlm_ListaPronto.ItemHeight = 21;
+            this.planosTlm_ListaPronto.Location = new System.Drawing.Point(551, 52);
+            this.planosTlm_ListaPronto.Name = "planosTlm_ListaPronto";
+            this.planosTlm_ListaPronto.Size = new System.Drawing.Size(189, 382);
+            this.planosTlm_ListaPronto.TabIndex = 9;
+            this.planosTlm_ListaPronto.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
             // 
-            // planosTlm_Lista2
+            // planosTlm_ListaAtivo
             // 
-            this.planosTlm_Lista2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planosTlm_Lista2.FormattingEnabled = true;
-            this.planosTlm_Lista2.HorizontalScrollbar = true;
-            this.planosTlm_Lista2.ItemHeight = 21;
-            this.planosTlm_Lista2.Location = new System.Drawing.Point(324, 52);
-            this.planosTlm_Lista2.Name = "planosTlm_Lista2";
-            this.planosTlm_Lista2.Size = new System.Drawing.Size(189, 382);
-            this.planosTlm_Lista2.TabIndex = 8;
+            this.planosTlm_ListaAtivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planosTlm_ListaAtivo.FormattingEnabled = true;
+            this.planosTlm_ListaAtivo.HorizontalScrollbar = true;
+            this.planosTlm_ListaAtivo.ItemHeight = 21;
+            this.planosTlm_ListaAtivo.Location = new System.Drawing.Point(324, 52);
+            this.planosTlm_ListaAtivo.Name = "planosTlm_ListaAtivo";
+            this.planosTlm_ListaAtivo.Size = new System.Drawing.Size(189, 382);
+            this.planosTlm_ListaAtivo.TabIndex = 8;
+            this.planosTlm_ListaAtivo.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
             // 
-            // planosTlm_Lista1
+            // planosTlm_ListaPendente
             // 
-            this.planosTlm_Lista1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planosTlm_Lista1.FormattingEnabled = true;
-            this.planosTlm_Lista1.HorizontalScrollbar = true;
-            this.planosTlm_Lista1.ItemHeight = 21;
-            this.planosTlm_Lista1.Location = new System.Drawing.Point(97, 52);
-            this.planosTlm_Lista1.Name = "planosTlm_Lista1";
-            this.planosTlm_Lista1.Size = new System.Drawing.Size(189, 382);
-            this.planosTlm_Lista1.TabIndex = 7;
+            this.planosTlm_ListaPendente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planosTlm_ListaPendente.FormattingEnabled = true;
+            this.planosTlm_ListaPendente.HorizontalScrollbar = true;
+            this.planosTlm_ListaPendente.ItemHeight = 21;
+            this.planosTlm_ListaPendente.Location = new System.Drawing.Point(97, 52);
+            this.planosTlm_ListaPendente.Name = "planosTlm_ListaPendente";
+            this.planosTlm_ListaPendente.Size = new System.Drawing.Size(189, 382);
+            this.planosTlm_ListaPendente.TabIndex = 7;
+            this.planosTlm_ListaPendente.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
             // 
             // tabPage_Planos
             // 
@@ -509,12 +542,12 @@
             this.tabPage_Planos.Controls.Add(this.planos_btnAdd);
             this.tabPage_Planos.Controls.Add(this.label1);
             this.tabPage_Planos.Controls.Add(this.planos_txtNovoPlano);
-            this.tabPage_Planos.Controls.Add(this.planos_Lista4);
+            this.tabPage_Planos.Controls.Add(this.planos_ListaEnviados);
             this.tabPage_Planos.Controls.Add(this.planos_btnNext);
             this.tabPage_Planos.Controls.Add(this.planos_btnPrevious);
-            this.tabPage_Planos.Controls.Add(this.planos_Lista3);
-            this.tabPage_Planos.Controls.Add(this.planos_Lista2);
-            this.tabPage_Planos.Controls.Add(this.planos_Lista1);
+            this.tabPage_Planos.Controls.Add(this.planos_ListaPronto);
+            this.tabPage_Planos.Controls.Add(this.planos_ListaAtivo);
+            this.tabPage_Planos.Controls.Add(this.planos_ListaPendente);
             this.tabPage_Planos.Location = new System.Drawing.Point(4, 5);
             this.tabPage_Planos.Name = "tabPage_Planos";
             this.tabPage_Planos.Padding = new System.Windows.Forms.Padding(3);
@@ -599,16 +632,17 @@
             this.planos_txtNovoPlano.Size = new System.Drawing.Size(189, 22);
             this.planos_txtNovoPlano.TabIndex = 7;
             // 
-            // planos_Lista4
+            // planos_ListaEnviados
             // 
-            this.planos_Lista4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planos_Lista4.FormattingEnabled = true;
-            this.planos_Lista4.HorizontalScrollbar = true;
-            this.planos_Lista4.ItemHeight = 21;
-            this.planos_Lista4.Location = new System.Drawing.Point(778, 52);
-            this.planos_Lista4.Name = "planos_Lista4";
-            this.planos_Lista4.Size = new System.Drawing.Size(189, 382);
-            this.planos_Lista4.TabIndex = 5;
+            this.planos_ListaEnviados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planos_ListaEnviados.FormattingEnabled = true;
+            this.planos_ListaEnviados.HorizontalScrollbar = true;
+            this.planos_ListaEnviados.ItemHeight = 21;
+            this.planos_ListaEnviados.Location = new System.Drawing.Point(778, 52);
+            this.planos_ListaEnviados.Name = "planos_ListaEnviados";
+            this.planos_ListaEnviados.Size = new System.Drawing.Size(189, 382);
+            this.planos_ListaEnviados.TabIndex = 5;
+            this.planos_ListaEnviados.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
             // 
             // planos_btnNext
             // 
@@ -616,10 +650,10 @@
             this.planos_btnNext.Name = "planos_btnNext";
             this.planos_btnNext.Size = new System.Drawing.Size(75, 23);
             this.planos_btnNext.TabIndex = 4;
-            this.planos_btnNext.Tag = "1";
+            this.planos_btnNext.Tag = "+1";
             this.planos_btnNext.Text = "->";
             this.planos_btnNext.UseVisualStyleBackColor = true;
-            this.planos_btnNext.Click += new System.EventHandler(this.moverItemListboxPlanos);
+            this.planos_btnNext.Click += new System.EventHandler(this.planos_btnMover_Click);
             // 
             // planos_btnPrevious
             // 
@@ -630,43 +664,43 @@
             this.planos_btnPrevious.Tag = "-1";
             this.planos_btnPrevious.Text = "<-";
             this.planos_btnPrevious.UseVisualStyleBackColor = true;
-            this.planos_btnPrevious.Click += new System.EventHandler(this.moverItemListboxPlanos);
+            this.planos_btnPrevious.Click += new System.EventHandler(this.planos_btnMover_Click);
             // 
-            // planos_Lista3
+            // planos_ListaPronto
             // 
-            this.planos_Lista3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planos_Lista3.FormattingEnabled = true;
-            this.planos_Lista3.HorizontalScrollbar = true;
-            this.planos_Lista3.ItemHeight = 21;
-            this.planos_Lista3.Location = new System.Drawing.Point(551, 52);
-            this.planos_Lista3.Name = "planos_Lista3";
-            this.planos_Lista3.Size = new System.Drawing.Size(189, 382);
-            this.planos_Lista3.TabIndex = 2;
-            this.planos_Lista3.SelectedIndexChanged += new System.EventHandler(this.clearSelectedItem);
+            this.planos_ListaPronto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planos_ListaPronto.FormattingEnabled = true;
+            this.planos_ListaPronto.HorizontalScrollbar = true;
+            this.planos_ListaPronto.ItemHeight = 21;
+            this.planos_ListaPronto.Location = new System.Drawing.Point(551, 52);
+            this.planos_ListaPronto.Name = "planos_ListaPronto";
+            this.planos_ListaPronto.Size = new System.Drawing.Size(189, 382);
+            this.planos_ListaPronto.TabIndex = 2;
+            this.planos_ListaPronto.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
             // 
-            // planos_Lista2
+            // planos_ListaAtivo
             // 
-            this.planos_Lista2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planos_Lista2.FormattingEnabled = true;
-            this.planos_Lista2.HorizontalScrollbar = true;
-            this.planos_Lista2.ItemHeight = 21;
-            this.planos_Lista2.Location = new System.Drawing.Point(324, 52);
-            this.planos_Lista2.Name = "planos_Lista2";
-            this.planos_Lista2.Size = new System.Drawing.Size(189, 382);
-            this.planos_Lista2.TabIndex = 1;
-            this.planos_Lista2.SelectedIndexChanged += new System.EventHandler(this.clearSelectedItem);
+            this.planos_ListaAtivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planos_ListaAtivo.FormattingEnabled = true;
+            this.planos_ListaAtivo.HorizontalScrollbar = true;
+            this.planos_ListaAtivo.ItemHeight = 21;
+            this.planos_ListaAtivo.Location = new System.Drawing.Point(324, 52);
+            this.planos_ListaAtivo.Name = "planos_ListaAtivo";
+            this.planos_ListaAtivo.Size = new System.Drawing.Size(189, 382);
+            this.planos_ListaAtivo.TabIndex = 1;
+            this.planos_ListaAtivo.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
             // 
-            // planos_Lista1
+            // planos_ListaPendente
             // 
-            this.planos_Lista1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planos_Lista1.FormattingEnabled = true;
-            this.planos_Lista1.HorizontalScrollbar = true;
-            this.planos_Lista1.ItemHeight = 21;
-            this.planos_Lista1.Location = new System.Drawing.Point(97, 52);
-            this.planos_Lista1.Name = "planos_Lista1";
-            this.planos_Lista1.Size = new System.Drawing.Size(189, 382);
-            this.planos_Lista1.TabIndex = 0;
-            this.planos_Lista1.SelectedIndexChanged += new System.EventHandler(this.clearSelectedItem);
+            this.planos_ListaPendente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planos_ListaPendente.FormattingEnabled = true;
+            this.planos_ListaPendente.HorizontalScrollbar = true;
+            this.planos_ListaPendente.ItemHeight = 21;
+            this.planos_ListaPendente.Location = new System.Drawing.Point(97, 52);
+            this.planos_ListaPendente.Name = "planos_ListaPendente";
+            this.planos_ListaPendente.Size = new System.Drawing.Size(189, 382);
+            this.planos_ListaPendente.TabIndex = 0;
+            this.planos_ListaPendente.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
             // 
             // tabPage_Compras
             // 
@@ -699,6 +733,11 @@
             // 
             this.compras_txtEnvioDividido.DecimalPlaces = 2;
             this.compras_txtEnvioDividido.Location = new System.Drawing.Point(141, 167);
+            this.compras_txtEnvioDividido.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.compras_txtEnvioDividido.Name = "compras_txtEnvioDividido";
             this.compras_txtEnvioDividido.Size = new System.Drawing.Size(94, 22);
             this.compras_txtEnvioDividido.TabIndex = 47;
@@ -708,6 +747,11 @@
             // 
             this.compras_txtEnvio.DecimalPlaces = 2;
             this.compras_txtEnvio.Location = new System.Drawing.Point(141, 136);
+            this.compras_txtEnvio.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.compras_txtEnvio.Name = "compras_txtEnvio";
             this.compras_txtEnvio.Size = new System.Drawing.Size(404, 22);
             this.compras_txtEnvio.TabIndex = 46;
@@ -716,6 +760,11 @@
             // 
             this.compras_txtPreco.DecimalPlaces = 2;
             this.compras_txtPreco.Location = new System.Drawing.Point(141, 102);
+            this.compras_txtPreco.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.compras_txtPreco.Name = "compras_txtPreco";
             this.compras_txtPreco.Size = new System.Drawing.Size(404, 22);
             this.compras_txtPreco.TabIndex = 45;
@@ -870,6 +919,41 @@
             this.table_Compras.Size = new System.Drawing.Size(1060, 206);
             this.table_Compras.TabIndex = 1;
             // 
+            // compras_ID
+            // 
+            this.compras_ID.HeaderText = "ID";
+            this.compras_ID.Name = "compras_ID";
+            this.compras_ID.ReadOnly = true;
+            this.compras_ID.Width = 117;
+            // 
+            // compras_Tipo
+            // 
+            this.compras_Tipo.HeaderText = "Tipo";
+            this.compras_Tipo.Name = "compras_Tipo";
+            this.compras_Tipo.ReadOnly = true;
+            this.compras_Tipo.Width = 265;
+            // 
+            // compras_Descricao
+            // 
+            this.compras_Descricao.HeaderText = "Descrição";
+            this.compras_Descricao.Name = "compras_Descricao";
+            this.compras_Descricao.ReadOnly = true;
+            this.compras_Descricao.Width = 265;
+            // 
+            // compras_Preco
+            // 
+            this.compras_Preco.HeaderText = "Preço";
+            this.compras_Preco.Name = "compras_Preco";
+            this.compras_Preco.ReadOnly = true;
+            this.compras_Preco.Width = 265;
+            // 
+            // compras_Data
+            // 
+            this.compras_Data.HeaderText = "Data";
+            this.compras_Data.Name = "compras_Data";
+            this.compras_Data.ReadOnly = true;
+            this.compras_Data.Width = 105;
+            // 
             // tabPage_Vendas
             // 
             this.tabPage_Vendas.Controls.Add(this.vendas_txtEnvioDividido);
@@ -924,6 +1008,11 @@
             // 
             this.vendas_txtMaterial.DecimalPlaces = 2;
             this.vendas_txtMaterial.Location = new System.Drawing.Point(141, 171);
+            this.vendas_txtMaterial.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.vendas_txtMaterial.Name = "vendas_txtMaterial";
             this.vendas_txtMaterial.Size = new System.Drawing.Size(404, 22);
             this.vendas_txtMaterial.TabIndex = 32;
@@ -932,6 +1021,11 @@
             // 
             this.vendas_txtEnvio.DecimalPlaces = 2;
             this.vendas_txtEnvio.Location = new System.Drawing.Point(141, 136);
+            this.vendas_txtEnvio.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.vendas_txtEnvio.Name = "vendas_txtEnvio";
             this.vendas_txtEnvio.Size = new System.Drawing.Size(404, 22);
             this.vendas_txtEnvio.TabIndex = 31;
@@ -940,6 +1034,11 @@
             // 
             this.vendas_txtPreco.DecimalPlaces = 2;
             this.vendas_txtPreco.Location = new System.Drawing.Point(141, 102);
+            this.vendas_txtPreco.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.vendas_txtPreco.Name = "vendas_txtPreco";
             this.vendas_txtPreco.Size = new System.Drawing.Size(404, 22);
             this.vendas_txtPreco.TabIndex = 30;
@@ -1043,6 +1142,48 @@
             this.table_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.table_Vendas.Size = new System.Drawing.Size(1060, 206);
             this.table_Vendas.TabIndex = 0;
+            // 
+            // vendas_ID
+            // 
+            this.vendas_ID.HeaderText = "ID";
+            this.vendas_ID.Name = "vendas_ID";
+            this.vendas_ID.ReadOnly = true;
+            this.vendas_ID.Width = 117;
+            // 
+            // vendas_Tipo
+            // 
+            this.vendas_Tipo.HeaderText = "Tipo";
+            this.vendas_Tipo.Name = "vendas_Tipo";
+            this.vendas_Tipo.ReadOnly = true;
+            this.vendas_Tipo.Width = 175;
+            // 
+            // vendas_Descricao
+            // 
+            this.vendas_Descricao.HeaderText = "Descrição";
+            this.vendas_Descricao.Name = "vendas_Descricao";
+            this.vendas_Descricao.ReadOnly = true;
+            this.vendas_Descricao.Width = 260;
+            // 
+            // vendas_Preco
+            // 
+            this.vendas_Preco.HeaderText = "Preço";
+            this.vendas_Preco.Name = "vendas_Preco";
+            this.vendas_Preco.ReadOnly = true;
+            this.vendas_Preco.Width = 175;
+            // 
+            // vendas_Lucro
+            // 
+            this.vendas_Lucro.HeaderText = "Lucro";
+            this.vendas_Lucro.Name = "vendas_Lucro";
+            this.vendas_Lucro.ReadOnly = true;
+            this.vendas_Lucro.Width = 175;
+            // 
+            // vendas_Data
+            // 
+            this.vendas_Data.HeaderText = "Data";
+            this.vendas_Data.Name = "vendas_Data";
+            this.vendas_Data.ReadOnly = true;
+            this.vendas_Data.Width = 115;
             // 
             // vendas_txtDescricao
             // 
@@ -1355,11 +1496,8 @@
             // 
             // tabPage_ToDoList
             // 
-            this.tabPage_ToDoList.Controls.Add(this.iconButton9);
-            this.tabPage_ToDoList.Controls.Add(this.iconButton8);
-            this.tabPage_ToDoList.Controls.Add(this.label18);
-            this.tabPage_ToDoList.Controls.Add(this.textBox1);
-            this.tabPage_ToDoList.Controls.Add(this.toDoList_Lista);
+            this.tabPage_ToDoList.Controls.Add(this.apontamentos_guardar);
+            this.tabPage_ToDoList.Controls.Add(this.apontamentos_Text);
             this.tabPage_ToDoList.Location = new System.Drawing.Point(4, 5);
             this.tabPage_ToDoList.Name = "tabPage_ToDoList";
             this.tabPage_ToDoList.Padding = new System.Windows.Forms.Padding(3);
@@ -1367,63 +1505,6 @@
             this.tabPage_ToDoList.TabIndex = 6;
             this.tabPage_ToDoList.Text = "tabPage1";
             this.tabPage_ToDoList.UseVisualStyleBackColor = true;
-            // 
-            // iconButton9
-            // 
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.iconButton9.IconColor = System.Drawing.Color.Black;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton9.IconSize = 25;
-            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.iconButton9.Location = new System.Drawing.Point(779, 455);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(35, 35);
-            this.iconButton9.TabIndex = 22;
-            this.iconButton9.UseCompatibleTextRendering = true;
-            this.iconButton9.UseVisualStyleBackColor = true;
-            // 
-            // iconButton8
-            // 
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.iconButton8.IconColor = System.Drawing.Color.Black;
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 25;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton8.Location = new System.Drawing.Point(738, 455);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(35, 35);
-            this.iconButton8.TabIndex = 21;
-            this.iconButton8.UseCompatibleTextRendering = true;
-            this.iconButton8.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(470, 419);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(126, 30);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "Novo plano:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(334, 455);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(398, 35);
-            this.textBox1.TabIndex = 17;
-            // 
-            // toDoList_Lista
-            // 
-            this.toDoList_Lista.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toDoList_Lista.FormattingEnabled = true;
-            this.toDoList_Lista.HorizontalScrollbar = true;
-            this.toDoList_Lista.ItemHeight = 21;
-            this.toDoList_Lista.Location = new System.Drawing.Point(25, 23);
-            this.toDoList_Lista.Name = "toDoList_Lista";
-            this.toDoList_Lista.Size = new System.Drawing.Size(1003, 382);
-            this.toDoList_Lista.TabIndex = 8;
             // 
             // panel_Barra
             // 
@@ -1741,115 +1822,26 @@
             this.label_Menu.Text = "Menu";
             this.label_Menu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // compras_ID
+            // apontamentos_Text
             // 
-            this.compras_ID.HeaderText = "ID";
-            this.compras_ID.Name = "compras_ID";
-            this.compras_ID.ReadOnly = true;
-            this.compras_ID.Width = 117;
+            this.apontamentos_Text.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apontamentos_Text.Location = new System.Drawing.Point(6, 6);
+            this.apontamentos_Text.Multiline = true;
+            this.apontamentos_Text.Name = "apontamentos_Text";
+            this.apontamentos_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.apontamentos_Text.Size = new System.Drawing.Size(1052, 474);
+            this.apontamentos_Text.TabIndex = 23;
             // 
-            // compras_Tipo
+            // apontamentos_guardar
             // 
-            this.compras_Tipo.HeaderText = "Tipo";
-            this.compras_Tipo.Name = "compras_Tipo";
-            this.compras_Tipo.ReadOnly = true;
-            this.compras_Tipo.Width = 265;
-            // 
-            // compras_Descricao
-            // 
-            this.compras_Descricao.HeaderText = "Descrição";
-            this.compras_Descricao.Name = "compras_Descricao";
-            this.compras_Descricao.ReadOnly = true;
-            this.compras_Descricao.Width = 265;
-            // 
-            // compras_Preco
-            // 
-            this.compras_Preco.HeaderText = "Preço";
-            this.compras_Preco.Name = "compras_Preco";
-            this.compras_Preco.ReadOnly = true;
-            this.compras_Preco.Width = 265;
-            // 
-            // compras_Data
-            // 
-            this.compras_Data.HeaderText = "Data";
-            this.compras_Data.Name = "compras_Data";
-            this.compras_Data.ReadOnly = true;
-            this.compras_Data.Width = 105;
-            // 
-            // vendas_ID
-            // 
-            this.vendas_ID.HeaderText = "ID";
-            this.vendas_ID.Name = "vendas_ID";
-            this.vendas_ID.ReadOnly = true;
-            this.vendas_ID.Width = 117;
-            // 
-            // vendas_Tipo
-            // 
-            this.vendas_Tipo.HeaderText = "Tipo";
-            this.vendas_Tipo.Name = "vendas_Tipo";
-            this.vendas_Tipo.ReadOnly = true;
-            this.vendas_Tipo.Width = 175;
-            // 
-            // vendas_Descricao
-            // 
-            this.vendas_Descricao.HeaderText = "Descrição";
-            this.vendas_Descricao.Name = "vendas_Descricao";
-            this.vendas_Descricao.ReadOnly = true;
-            this.vendas_Descricao.Width = 260;
-            // 
-            // vendas_Preco
-            // 
-            this.vendas_Preco.HeaderText = "Preço";
-            this.vendas_Preco.Name = "vendas_Preco";
-            this.vendas_Preco.ReadOnly = true;
-            this.vendas_Preco.Width = 175;
-            // 
-            // vendas_Lucro
-            // 
-            this.vendas_Lucro.HeaderText = "Lucro";
-            this.vendas_Lucro.Name = "vendas_Lucro";
-            this.vendas_Lucro.ReadOnly = true;
-            this.vendas_Lucro.Width = 175;
-            // 
-            // vendas_Data
-            // 
-            this.vendas_Data.HeaderText = "Data";
-            this.vendas_Data.Name = "vendas_Data";
-            this.vendas_Data.ReadOnly = true;
-            this.vendas_Data.Width = 115;
-            // 
-            // stock_ID
-            // 
-            this.stock_ID.HeaderText = "ID";
-            this.stock_ID.Name = "stock_ID";
-            this.stock_ID.ReadOnly = true;
-            // 
-            // stock_Material
-            // 
-            this.stock_Material.HeaderText = "Material";
-            this.stock_Material.Name = "stock_Material";
-            this.stock_Material.ReadOnly = true;
-            this.stock_Material.Width = 90;
-            // 
-            // stock_Quantidade
-            // 
-            this.stock_Quantidade.HeaderText = "Quantidade";
-            this.stock_Quantidade.Name = "stock_Quantidade";
-            this.stock_Quantidade.ReadOnly = true;
-            this.stock_Quantidade.Width = 90;
-            // 
-            // stock_Preco
-            // 
-            this.stock_Preco.HeaderText = "Preço por Unidade";
-            this.stock_Preco.Name = "stock_Preco";
-            this.stock_Preco.ReadOnly = true;
-            this.stock_Preco.Width = 90;
-            // 
-            // stock_Data
-            // 
-            this.stock_Data.HeaderText = "Data";
-            this.stock_Data.Name = "stock_Data";
-            this.stock_Data.ReadOnly = true;
+            this.apontamentos_guardar.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.apontamentos_guardar.Location = new System.Drawing.Point(469, 486);
+            this.apontamentos_guardar.Name = "apontamentos_guardar";
+            this.apontamentos_guardar.Size = new System.Drawing.Size(126, 34);
+            this.apontamentos_guardar.TabIndex = 24;
+            this.apontamentos_guardar.Text = "Guardar";
+            this.apontamentos_guardar.UseVisualStyleBackColor = true;
+            this.apontamentos_guardar.Click += new System.EventHandler(this.apontamentos_guardar_Click);
             // 
             // Form1
             // 
@@ -1863,6 +1855,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HeyDrawn Money Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage_Stock.ResumeLayout(false);
             this.tabPage_Stock.PerformLayout();
@@ -1925,10 +1918,10 @@
 		private System.Windows.Forms.TextBox planosTlm_txtNovoPlano;
 		private System.Windows.Forms.Button planosTlm_btnNext;
 		private System.Windows.Forms.Button planosTlm_btnPrevious;
-		private System.Windows.Forms.ListBox planosTlm_Lista4;
-		private System.Windows.Forms.ListBox planosTlm_Lista3;
-		private System.Windows.Forms.ListBox planosTlm_Lista2;
-		private System.Windows.Forms.ListBox planosTlm_Lista1;
+		private System.Windows.Forms.ListBox planosTlm_ListaEnviados;
+		private System.Windows.Forms.ListBox planosTlm_ListaPronto;
+		private System.Windows.Forms.ListBox planosTlm_ListaAtivo;
+		private System.Windows.Forms.ListBox planosTlm_ListaPendente;
 		private System.Windows.Forms.TabPage tabPage_Planos;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label5;
@@ -1938,12 +1931,12 @@
 		private System.Windows.Forms.Button planos_btnAdd;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox planos_txtNovoPlano;
-		private System.Windows.Forms.ListBox planos_Lista4;
+		private System.Windows.Forms.ListBox planos_ListaEnviados;
 		private System.Windows.Forms.Button planos_btnNext;
 		private System.Windows.Forms.Button planos_btnPrevious;
-		private System.Windows.Forms.ListBox planos_Lista3;
-		private System.Windows.Forms.ListBox planos_Lista2;
-		private System.Windows.Forms.ListBox planos_Lista1;
+		private System.Windows.Forms.ListBox planos_ListaPronto;
+		private System.Windows.Forms.ListBox planos_ListaAtivo;
+		private System.Windows.Forms.ListBox planos_ListaPendente;
 		private System.Windows.Forms.TabPage tabPage_Compras;
 		private System.Windows.Forms.Label compras_ProdutoMaisLucrado;
 		private System.Windows.Forms.Label compras_ProdutoMaisVendido;
@@ -2015,14 +2008,8 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.ColorDialog colorDialog;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.TabPage tabPage_ToDoList;
-        private FontAwesome.Sharp.IconButton iconButton9;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox toDoList_Lista;
         private System.Windows.Forms.NumericUpDown vendas_txtPreco;
         private System.Windows.Forms.NumericUpDown vendas_txtEnvioDividido;
         private System.Windows.Forms.NumericUpDown vendas_txtEnvioMaterial;
@@ -2047,6 +2034,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Lucro;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendas_Data;
+        private System.Windows.Forms.TextBox apontamentos_Text;
+        private System.Windows.Forms.Button apontamentos_guardar;
     }
 }
 

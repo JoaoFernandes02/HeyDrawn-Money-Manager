@@ -132,6 +132,17 @@ namespace HeyDrawn_Money_Manager
                 return resultado;
             }
         }
+
+        public string Apontamentos
+        {
+            get
+            {
+                var getApontamentos = client.Get("/Apontamentos");
+                var resultado = getApontamentos.ResultAs<string>();
+                if (resultado == null) resultado = "";
+                return resultado;
+            }
+        }
         #endregion
 
         #region Stock
@@ -206,6 +217,22 @@ namespace HeyDrawn_Money_Manager
                     produtoStock.ID = stockSemNull.IndexOf(stockSemNull.Last());
                 }
             client.Set("/Stock", stockSemNull);
+
+            List<Plano> planosSemNull = new List<Plano>();
+            foreach (Plano plano in Planos) if (plano != null)
+                {
+                    planosSemNull.Add(plano);
+                    plano.ID = planosSemNull.IndexOf(planosSemNull.Last());
+                }
+            client.Set("/Planos", planosSemNull);
+
+            List<Plano> planosTlmSemNull = new List<Plano>();
+            foreach (Plano planoTlm in PlanosTlm) if (planoTlm != null)
+                {
+                    planosTlmSemNull.Add(planoTlm);
+                    planoTlm.ID = planosTlmSemNull.IndexOf(planosTlmSemNull.Last());
+                }
+            client.Set("/PlanosTlm", planosTlmSemNull);
         }
         #endregion
 
@@ -222,6 +249,63 @@ namespace HeyDrawn_Money_Manager
         }
         #endregion
 
+        #region Planos
+
+        public void addPlano(string tipoPlano, Plano plano)
+        {
+            if(tipoPlano == "planoGeral")
+            {
+                plano.ID = Planos.Count;
+                client.Set("/Planos/" + plano.ID, plano);
+            }
+            else if(tipoPlano == "planoTlm")
+            {
+                plano.ID = PlanosTlm.Count;
+                client.Set("/PlanosTlm/" + plano.ID, plano);
+            }
+        }
+
+        public void removePlano(string nomePlano)
+        {
+            string id = nomePlano.Split(' ')[0];
+            client.Delete("/Planos/" + id);
+
+            List<Plano> planosSemNull = new List<Plano>();
+            foreach (Plano plano in Planos) if (plano != null)
+                {
+                    planosSemNull.Add(plano);
+                    plano.ID = planosSemNull.IndexOf(planosSemNull.Last());
+                }
+            client.Set("/Planos", planosSemNull);
+        }
+
+        public void removePlanoTlm(string nomePlano)
+        {
+            string id = nomePlano.Split(' ')[0];
+            client.Delete("/PlanosTlm/" + id);
+
+            List<Plano> planosTlmSemNull = new List<Plano>();
+            foreach (Plano planoTlm in PlanosTlm) if (planoTlm != null)
+                {
+                    planosTlmSemNull.Add(planoTlm);
+                    planoTlm.ID = planosTlmSemNull.IndexOf(planosTlmSemNull.Last());
+                }
+            client.Set("/PlanosTlm", planosTlmSemNull);
+        }
+
+        public Plano editEstadoPlano(string nomePlano, string path, int nextEstado)
+        {
+            string id = nomePlano.Split(' ')[0];
+            var query = client.Get("/" + path + "/" + id);
+            Plano plano = query.ResultAs<Plano>();
+
+            plano.UpdateEstado(nextEstado);
+
+            client.Update("/" + path + "/" + id, plano);
+
+            return plano;
+        }
+        #endregion
         #region Stock
 
         public void addStock(ProdutoStock produto) {
@@ -262,6 +346,14 @@ namespace HeyDrawn_Money_Manager
         public void SetTipo(List<string> lista, string tipo)
         {
             client.Set(tipo, lista);
+        }
+        #endregion
+
+        #region Apontamentos
+
+        public void SaveApontamentos(string txt)
+        {
+            client.Set("Apontamentos", txt);
         }
         #endregion
     }

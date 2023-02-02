@@ -86,18 +86,16 @@ namespace HeyDrawn_Money_Manager
             table_Compras.Rows.Clear();
             table_Compras.Rows.AddRange(dados.Compras.GetRows());
 
-            foreach (Plano plano in dados.Planos)
-            {
-                ((ListBox)tabPage_Planos.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
-            }
+            LoadPlanos("planoGeral");
 
-            foreach (Plano plano in dados.PlanosTlm)
-            {
-                ((ListBox)tabPage_PlanosTlm.Controls[plano.NomeLista]).Items.Add(plano.Descricao);
-            }
+            LoadPlanos("planoTlm");
 
             table_Stock.Rows.Clear();
             table_Stock.Rows.AddRange(dados.Stock.GetRows());
+
+            string txtApontamentos = dados.Apontamentos.Replace("\\r\\n", "\r\n");
+            apontamentos_Text.Text = txtApontamentos;
+
         }
         private void ChangeTab(object sender, EventArgs e)
         {
@@ -384,6 +382,7 @@ namespace HeyDrawn_Money_Manager
         #endregion
 
         #region Planos e PlanosTlm
+        /*
         private void moverItemListboxPlanos(object sender, EventArgs e)
         {
             ListBox.SelectedObjectCollection sourceItems = null;
@@ -398,7 +397,7 @@ namespace HeyDrawn_Money_Manager
             ListBox source = null;
             ListBox destiny;
 
-            int nextListbox = int.Parse(((Control)sender).Tag.ToString());
+            string nextListbox = ((Control)sender).Tag.ToString();
 
             int numeroListbox = 0;
 
@@ -410,6 +409,7 @@ namespace HeyDrawn_Money_Manager
                     sourceItems = listBox.SelectedItems;
                     numeroListbox = int.Parse(listBox.Name.ToString()[12].ToString()) + nextListbox;
                 }
+                break;
             }
 
             destiny = (ListBox)tabPage_Planos.Controls["planos_Lista" + numeroListbox.ToString()];
@@ -424,7 +424,7 @@ namespace HeyDrawn_Money_Manager
             while (source.SelectedItems.Count > 0)
             {
                 source.Items.Remove(source.SelectedItems[0]);
-            }
+            }            
         }
         private void moverItemListboxPlanosTlm(object sender, EventArgs e)
         {
@@ -467,56 +467,120 @@ namespace HeyDrawn_Money_Manager
             {
                 source.Items.Remove(source.SelectedItems[0]);
             }
-        }
-        private void clearSelectedItem(object sender, EventArgs e)
+        }*/
+
+        private void LoadPlanos(string tipoPlano)
         {
-            ((ListBox)sender).Tag = "Selecionado";
-
-            ListBox[] listBoxes = { planos_Lista1, planos_Lista2, planos_Lista3 };
-
-            foreach (ListBox listBox in listBoxes)
+            switch (tipoPlano)
             {
-                if (listBox.Tag is null) {
+                case "planoGeral":
+                    foreach (Control listBox in tabPage_Planos.Controls)
+                        if (listBox is ListBox) ((ListBox)listBox).Items.Clear();
+
+                    foreach (Plano plano in dados.Planos)
+                        ((ListBox)tabPage_Planos.Controls["planos_Lista" + plano.Estado]).Items.Add(plano);
+                    break;
+
+                case "planoTlm":
+                    foreach (Control listBox in tabPage_PlanosTlm.Controls)
+                        if (listBox is ListBox) ((ListBox)listBox).Items.Clear();
+
+                    foreach (Plano planoTlm in dados.PlanosTlm)
+                        ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + planoTlm.Estado]).Items.Add(planoTlm);
+                    break;
+            }
+        }
+        private void planosClearSelected(object sender, EventArgs e)
+        {
+            foreach (ListBox listBox in tabPage_Planos.Controls.OfType<ListBox>())
+            {
+                if (listBox != sender)
+                {
                     listBox.ClearSelected();
                 }
             }
-
-            ((ListBox)sender).Tag = null;
+        }
+        
+        private void planosTlmClearSelected(object sender, EventArgs e)
+        {
+            foreach (ListBox listBox in tabPage_PlanosTlm.Controls.OfType<ListBox>())
+            {
+                if (listBox != sender)
+                {
+                    listBox.ClearSelected();
+                }
+            }
         }
         private void planos_btnAdd_Click(object sender, EventArgs e)
         {
             if (!HasText(new List<Control>() { planos_txtNovoPlano })) return;
-            planos_Lista1.Items.Add(planos_txtNovoPlano.Text);
-            planos_txtNovoPlano.Clear();
-        }
 
+            Plano plano = new Plano(planos_txtNovoPlano.Text, "Pendente");
+
+            dados.addPlano("planoGeral", plano);
+
+            planos_txtNovoPlano.Clear();
+
+            LoadPlanos("planoGeral");
+        }
         private void planosTlm_btnAdd_Click(object sender, EventArgs e)
         {
             if (!HasText(new List<Control>() { planosTlm_txtNovoPlano })) return;
-            planosTlm_Lista1.Items.Add(planosTlm_txtNovoPlano.Text);
+
+            Plano plano = new Plano(planosTlm_txtNovoPlano.Text, "Pendente");
+
+            dados.addPlano("planoTlm", plano);
+
             planosTlm_txtNovoPlano.Clear();
+
+            LoadPlanos("planoTlm");
         }
         private void planos_btnApagar_Click(object sender, EventArgs e)
         {
-            foreach (Control control in tabPage_Planos.Controls)
+            foreach (ListBox listBox in tabPage_Planos.Controls.OfType<ListBox>())
             {
-                if (control.Name.StartsWith("planos_Lista"))
+                if (listBox.SelectedItems.Count > 0)
                 {
-                    ((ListBox)control).Items.Remove(((ListBox)control).SelectedItem);
+                    dados.removePlano(listBox.SelectedItem.ToString());
+                    LoadPlanos("planoGeral");
                 }
             }
         }
         private void planosTlm_btnApagar_Click(object sender, EventArgs e)
         {
-            foreach (Control control in tabPage_PlanosTlm.Controls)
+            foreach (ListBox listBox in tabPage_PlanosTlm.Controls.OfType<ListBox>())
             {
-                if (control.Name.StartsWith("planosTlm_Lista"))
+                if (listBox.SelectedItems.Count > 0)
                 {
-                    ((ListBox)control).Items.Remove(((ListBox)control).SelectedItem);
+                    dados.removePlanoTlm(listBox.SelectedItem.ToString());
+                    LoadPlanos("planoTlm");
                 }
             }
         }
-
+        private void planosTlm_btnMover_Click(object sender, EventArgs e)
+        {
+            foreach (ListBox listBox in tabPage_PlanosTlm.Controls.OfType<ListBox>())
+            {
+                if (listBox.SelectedItems.Count > 0)
+                {
+                    Plano plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "PlanosTlm", int.Parse(((Control)sender).Tag.ToString()));
+                    listBox.Items.Remove(listBox.SelectedItem);
+                    ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).Items.Add(plano);
+                }
+            }
+        }
+        private void planos_btnMover_Click(object sender, EventArgs e)
+        {
+            foreach (ListBox listBox in tabPage_Planos.Controls.OfType<ListBox>())
+            {
+                if (listBox.SelectedItems.Count > 0)
+                {
+                    Plano plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "Planos", int.Parse(((Control)sender).Tag.ToString()));
+                    listBox.Items.Remove(listBox.SelectedItem);
+                    ((ListBox)tabPage_Planos.Controls["planos_Lista" + plano.Estado]).Items.Add(plano);
+                }
+            }
+        }
         #endregion
 
         #region Stock
@@ -639,5 +703,16 @@ namespace HeyDrawn_Money_Manager
             ((ListBox)listBox).Items.Remove(((ListBox)listBox).SelectedItem);
         }
         #endregion
+
+        private void apontamentos_guardar_Click(object sender, EventArgs e)
+        {
+            string txt = apontamentos_Text.Text.Replace("\r\n", "\\r\\n");
+            dados.SaveApontamentos(txt);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            apontamentos_guardar.PerformClick();
+        }
     }
 }

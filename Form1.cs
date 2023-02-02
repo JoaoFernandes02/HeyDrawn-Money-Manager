@@ -382,93 +382,6 @@ namespace HeyDrawn_Money_Manager
         #endregion
 
         #region Planos e PlanosTlm
-        /*
-        private void moverItemListboxPlanos(object sender, EventArgs e)
-        {
-            ListBox.SelectedObjectCollection sourceItems = null;
-
-            List<ListBox> listBoxes = new List<ListBox>();
-
-            foreach(Control control in tabPage_Planos.Controls)
-            {
-                if (control is ListBox) listBoxes.Add((ListBox)control);
-            }
-
-            ListBox source = null;
-            ListBox destiny;
-
-            string nextListbox = ((Control)sender).Tag.ToString();
-
-            int numeroListbox = 0;
-
-            foreach (ListBox listBox in listBoxes)
-            {
-                if(listBox.SelectedItem != null)
-                {
-                    source = listBox;
-                    sourceItems = listBox.SelectedItems;
-                    numeroListbox = int.Parse(listBox.Name.ToString()[12].ToString()) + nextListbox;
-                }
-                break;
-            }
-
-            destiny = (ListBox)tabPage_Planos.Controls["planos_Lista" + numeroListbox.ToString()];
-
-            if (sourceItems == null) return;
-            if (numeroListbox < 1 || numeroListbox > listBoxes.Count) return;
-
-            foreach (var item in sourceItems)
-            {
-                destiny.Items.Add(item);
-            }
-            while (source.SelectedItems.Count > 0)
-            {
-                source.Items.Remove(source.SelectedItems[0]);
-            }            
-        }
-        private void moverItemListboxPlanosTlm(object sender, EventArgs e)
-        {
-            ListBox.SelectedObjectCollection sourceItems = null;
-
-            List<ListBox> listBoxes = new List<ListBox>();
-
-            foreach (Control control in tabPage_PlanosTlm.Controls)
-            {
-                if (control is ListBox) listBoxes.Add((ListBox)control);
-            }
-
-            ListBox source = null;
-            ListBox destiny;
-
-            int nextListbox = int.Parse(((Control)sender).Tag.ToString());
-
-            int numeroListbox = 0;
-
-            foreach (ListBox listBox in listBoxes)
-            {
-                if (listBox.SelectedItem != null)
-                {
-                    source = listBox;
-                    sourceItems = listBox.SelectedItems;
-                    numeroListbox = int.Parse(listBox.Name.ToString()[15].ToString()) + nextListbox;
-                }
-            }
-
-            destiny = (ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + numeroListbox.ToString()];
-
-            if (sourceItems == null) return;
-            if (numeroListbox < 1 || numeroListbox > listBoxes.Count) return;
-
-            foreach (var item in sourceItems)
-            {
-                destiny.Items.Add(item);
-            }
-            while (source.SelectedItems.Count > 0)
-            {
-                source.Items.Remove(source.SelectedItems[0]);
-            }
-        }*/
-
         private void LoadPlanos(string tipoPlano)
         {
             switch (tipoPlano)
@@ -490,24 +403,22 @@ namespace HeyDrawn_Money_Manager
                     break;
             }
         }
-        private void planosClearSelected(object sender, EventArgs e)
+        private void planosItemClick_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach (ListBox listBox in tabPage_Planos.Controls.OfType<ListBox>())
+            ListBox thisListbox = (ListBox)sender;
+            int index = thisListbox.IndexFromPoint(e.Location);
+            List<ListBox> allListboxes = new List<ListBox>();
+            allListboxes.AddRange(tabPage_Planos.Controls.OfType<ListBox>());
+            allListboxes.AddRange(tabPage_PlanosTlm.Controls.OfType<ListBox>());
+
+            if (index != ListBox.NoMatches)
             {
-                if (listBox != sender)
+                foreach (ListBox listBox in allListboxes)
                 {
-                    listBox.ClearSelected();
-                }
-            }
-        }
-        
-        private void planosTlmClearSelected(object sender, EventArgs e)
-        {
-            foreach (ListBox listBox in tabPage_PlanosTlm.Controls.OfType<ListBox>())
-            {
-                if (listBox != sender)
-                {
-                    listBox.ClearSelected();
+                    if (!listBox.ClientRectangle.Contains(listBox.PointToClient(Cursor.Position)))
+                    {
+                        listBox.ClearSelected();
+                    }
                 }
             }
         }
@@ -565,21 +476,25 @@ namespace HeyDrawn_Money_Manager
                 {
                     Plano plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "PlanosTlm", int.Parse(((Control)sender).Tag.ToString()));
                     listBox.Items.Remove(listBox.SelectedItem);
-                    ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).Items.Add(plano);
+                    int newIndex = ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).Items.Add(plano);
+                    ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).SelectedIndex = newIndex;
                 }
             }
         }
         private void planos_btnMover_Click(object sender, EventArgs e)
         {
+            Plano plano = new Plano("default", "default");
             foreach (ListBox listBox in tabPage_Planos.Controls.OfType<ListBox>())
             {
                 if (listBox.SelectedItems.Count > 0)
                 {
-                    Plano plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "Planos", int.Parse(((Control)sender).Tag.ToString()));
+                    plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "Planos", int.Parse(((Control)sender).Tag.ToString()));
                     listBox.Items.Remove(listBox.SelectedItem);
-                    ((ListBox)tabPage_Planos.Controls["planos_Lista" + plano.Estado]).Items.Add(plano);
                 }
             }
+            if (plano.Estado == "default") return;
+            int newIndex = ((ListBox)tabPage_Planos.Controls["planos_Lista" + plano.Estado]).Items.Add(plano);
+            ((ListBox)tabPage_Planos.Controls["planos_Lista" + plano.Estado]).SelectedIndex = newIndex;
         }
         #endregion
 
@@ -704,6 +619,7 @@ namespace HeyDrawn_Money_Manager
         }
         #endregion
 
+        #region Apontamentos
         private void apontamentos_guardar_Click(object sender, EventArgs e)
         {
             string txt = apontamentos_Text.Text.Replace("\r\n", "\\r\\n");
@@ -714,5 +630,8 @@ namespace HeyDrawn_Money_Manager
         {
             apontamentos_guardar.PerformClick();
         }
+
+        #endregion
+
     }
 }

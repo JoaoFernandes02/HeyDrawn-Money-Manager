@@ -149,6 +149,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage_ToDoList = new System.Windows.Forms.TabPage();
+            this.apontamentos_guardar = new System.Windows.Forms.Button();
+            this.apontamentos_Text = new System.Windows.Forms.TextBox();
             this.panel_Barra = new System.Windows.Forms.Panel();
             this.label_Logo = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -166,8 +168,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label_Menu = new System.Windows.Forms.Label();
-            this.apontamentos_Text = new System.Windows.Forms.TextBox();
-            this.apontamentos_guardar = new System.Windows.Forms.Button();
             this.tabPage_Stock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_Stock)).BeginInit();
             this.tabPage_PlanosTlm.SuspendLayout();
@@ -494,7 +494,7 @@
             this.planosTlm_ListaEnviados.Name = "planosTlm_ListaEnviados";
             this.planosTlm_ListaEnviados.Size = new System.Drawing.Size(189, 382);
             this.planosTlm_ListaEnviados.TabIndex = 10;
-            this.planosTlm_ListaEnviados.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
+            this.planosTlm_ListaEnviados.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planosTlm_ListaPronto
             // 
@@ -506,7 +506,7 @@
             this.planosTlm_ListaPronto.Name = "planosTlm_ListaPronto";
             this.planosTlm_ListaPronto.Size = new System.Drawing.Size(189, 382);
             this.planosTlm_ListaPronto.TabIndex = 9;
-            this.planosTlm_ListaPronto.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
+            this.planosTlm_ListaPronto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planosTlm_ListaAtivo
             // 
@@ -518,7 +518,7 @@
             this.planosTlm_ListaAtivo.Name = "planosTlm_ListaAtivo";
             this.planosTlm_ListaAtivo.Size = new System.Drawing.Size(189, 382);
             this.planosTlm_ListaAtivo.TabIndex = 8;
-            this.planosTlm_ListaAtivo.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
+            this.planosTlm_ListaAtivo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planosTlm_ListaPendente
             // 
@@ -530,7 +530,7 @@
             this.planosTlm_ListaPendente.Name = "planosTlm_ListaPendente";
             this.planosTlm_ListaPendente.Size = new System.Drawing.Size(189, 382);
             this.planosTlm_ListaPendente.TabIndex = 7;
-            this.planosTlm_ListaPendente.SelectedIndexChanged += new System.EventHandler(this.planosTlmClearSelected);
+            this.planosTlm_ListaPendente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // tabPage_Planos
             // 
@@ -642,7 +642,7 @@
             this.planos_ListaEnviados.Name = "planos_ListaEnviados";
             this.planos_ListaEnviados.Size = new System.Drawing.Size(189, 382);
             this.planos_ListaEnviados.TabIndex = 5;
-            this.planos_ListaEnviados.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
+            this.planos_ListaEnviados.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planos_btnNext
             // 
@@ -676,7 +676,7 @@
             this.planos_ListaPronto.Name = "planos_ListaPronto";
             this.planos_ListaPronto.Size = new System.Drawing.Size(189, 382);
             this.planos_ListaPronto.TabIndex = 2;
-            this.planos_ListaPronto.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
+            this.planos_ListaPronto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planos_ListaAtivo
             // 
@@ -688,7 +688,7 @@
             this.planos_ListaAtivo.Name = "planos_ListaAtivo";
             this.planos_ListaAtivo.Size = new System.Drawing.Size(189, 382);
             this.planos_ListaAtivo.TabIndex = 1;
-            this.planos_ListaAtivo.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
+            this.planos_ListaAtivo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // planos_ListaPendente
             // 
@@ -700,7 +700,7 @@
             this.planos_ListaPendente.Name = "planos_ListaPendente";
             this.planos_ListaPendente.Size = new System.Drawing.Size(189, 382);
             this.planos_ListaPendente.TabIndex = 0;
-            this.planos_ListaPendente.SelectedIndexChanged += new System.EventHandler(this.planosClearSelected);
+            this.planos_ListaPendente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.planosItemClick_MouseClick);
             // 
             // tabPage_Compras
             // 
@@ -1506,6 +1506,27 @@
             this.tabPage_ToDoList.Text = "tabPage1";
             this.tabPage_ToDoList.UseVisualStyleBackColor = true;
             // 
+            // apontamentos_guardar
+            // 
+            this.apontamentos_guardar.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.apontamentos_guardar.Location = new System.Drawing.Point(469, 486);
+            this.apontamentos_guardar.Name = "apontamentos_guardar";
+            this.apontamentos_guardar.Size = new System.Drawing.Size(126, 34);
+            this.apontamentos_guardar.TabIndex = 24;
+            this.apontamentos_guardar.Text = "Guardar";
+            this.apontamentos_guardar.UseVisualStyleBackColor = true;
+            this.apontamentos_guardar.Click += new System.EventHandler(this.apontamentos_guardar_Click);
+            // 
+            // apontamentos_Text
+            // 
+            this.apontamentos_Text.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apontamentos_Text.Location = new System.Drawing.Point(6, 6);
+            this.apontamentos_Text.Multiline = true;
+            this.apontamentos_Text.Name = "apontamentos_Text";
+            this.apontamentos_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.apontamentos_Text.Size = new System.Drawing.Size(1052, 474);
+            this.apontamentos_Text.TabIndex = 23;
+            // 
             // panel_Barra
             // 
             this.panel_Barra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(30)))));
@@ -1821,27 +1842,6 @@
             this.label_Menu.TabIndex = 12;
             this.label_Menu.Text = "Menu";
             this.label_Menu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // apontamentos_Text
-            // 
-            this.apontamentos_Text.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apontamentos_Text.Location = new System.Drawing.Point(6, 6);
-            this.apontamentos_Text.Multiline = true;
-            this.apontamentos_Text.Name = "apontamentos_Text";
-            this.apontamentos_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.apontamentos_Text.Size = new System.Drawing.Size(1052, 474);
-            this.apontamentos_Text.TabIndex = 23;
-            // 
-            // apontamentos_guardar
-            // 
-            this.apontamentos_guardar.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.apontamentos_guardar.Location = new System.Drawing.Point(469, 486);
-            this.apontamentos_guardar.Name = "apontamentos_guardar";
-            this.apontamentos_guardar.Size = new System.Drawing.Size(126, 34);
-            this.apontamentos_guardar.TabIndex = 24;
-            this.apontamentos_guardar.Text = "Guardar";
-            this.apontamentos_guardar.UseVisualStyleBackColor = true;
-            this.apontamentos_guardar.Click += new System.EventHandler(this.apontamentos_guardar_Click);
             // 
             // Form1
             // 

@@ -9,6 +9,7 @@ using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
 using FireSharp;
+using System.IO;
 
 namespace HeyDrawn_Money_Manager
 {
@@ -160,11 +161,7 @@ namespace HeyDrawn_Money_Manager
         #endregion
 
         //Config para conectar à base de dados
-        IFirebaseConfig fcfg = new FirebaseConfig()
-        {
-            AuthSecret = "8TsSEvudRDgUBrpm92CQuHpoH4OjsTkF7QiTRJJ4",
-            BasePath = "https://heydrawnmanager-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
+        
 
         //Declaração do cliente
         private FirebaseClient client;
@@ -172,15 +169,27 @@ namespace HeyDrawn_Money_Manager
         #region Construtores
         public Dados()
         {
+            //Caminho do ficheiro que tem a config da db
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var filePath = Path.Combine(path, "heydrawnmanager.cfg");
             //Conecta à base de dados
             try
             {
+                string[] fcfgData = File.ReadAllLines(filePath);
+
+                IFirebaseConfig fcfg = new FirebaseConfig()
+                {
+                    AuthSecret = fcfgData[1],
+                    BasePath = fcfgData[0]
+                };
+
                 client = new FirebaseClient(fcfg);
             }
             catch
             {
-                MessageBox.Show("Houve um problema com a internet!");
+                MessageBox.Show("Houve um problema com a internet ou com os dados de acesso à DB!");
             }
+
 
             List<string> tiposCompraSemNull = new List<string>();
             foreach(string tipoCompra in TiposCompra) if(tipoCompra != null) tiposCompraSemNull.Add(tipoCompra);

@@ -307,8 +307,8 @@ namespace HeyDrawn_Money_Manager
             double maisLucradoValor = dados.MaisLucrado.Valor;
             string maisLucradoNome = dados.MaisVendido.Nome;
 
-            vendas_txtLucro.Text = lucro.ToString() + "€";
-            compras_txtLucro.Text = lucro.ToString() + "€";
+            vendas_txtLucro.Text = lucro.ToString("0.00") + "€";
+            compras_txtLucro.Text = lucro.ToString("0.00") + "€";
             if (lucro > 0)
             {
                 vendas_txtLucro.ForeColor = Color.Green;

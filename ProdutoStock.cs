@@ -29,7 +29,7 @@ namespace HeyDrawn_Money_Manager
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.ID.ToString() });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Nome });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = Quantidade.ToString() });
-            dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = PrecoUnidade.ToString() });
+            dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = PrecoUnidade.ToString("0.00") });
             dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell() { Value = base.Data.ToString() });
 
             return dataGridViewRow;

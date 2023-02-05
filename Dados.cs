@@ -24,7 +24,7 @@ namespace HeyDrawn_Money_Manager
                 var getTiposCompras = client.Get("/TiposCompra");
                 var resultado = getTiposCompras.ResultAs<List<string>>();
                 if (resultado == null) resultado = new List<string>();
-                return resultado;
+               return resultado;
             }
         }
         public List<string> TiposVenda
@@ -158,10 +158,7 @@ namespace HeyDrawn_Money_Manager
             }
         }
         #endregion
-        #endregion
-
-        //Config para conectar à base de dados
-        
+        #endregion        
 
         //Declaração do cliente
         private FirebaseClient client;
@@ -179,15 +176,19 @@ namespace HeyDrawn_Money_Manager
 
                 IFirebaseConfig fcfg = new FirebaseConfig()
                 {
-                    AuthSecret = fcfgData[1],
-                    BasePath = fcfgData[0]
+                    BasePath = fcfgData[0],
+                    AuthSecret = fcfgData[1]
                 };
 
                 client = new FirebaseClient(fcfg);
+
+                //testa se a conexão funcionou
+                client.Get("/");
             }
             catch
             {
                 MessageBox.Show("Houve um problema com a internet ou com os dados de acesso à DB!");
+                Application.Exit();
             }
 
 

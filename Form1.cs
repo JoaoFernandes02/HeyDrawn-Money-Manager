@@ -470,16 +470,18 @@ namespace HeyDrawn_Money_Manager
         }
         private void planosTlm_btnMover_Click(object sender, EventArgs e)
         {
+            Plano plano = new Plano("default", "default");
             foreach (ListBox listBox in tabPage_PlanosTlm.Controls.OfType<ListBox>())
             {
                 if (listBox.SelectedItems.Count > 0)
                 {
-                    Plano plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "PlanosTlm", int.Parse(((Control)sender).Tag.ToString()));
+                    plano = dados.editEstadoPlano(listBox.SelectedItem.ToString(), "PlanosTlm", int.Parse(((Control)sender).Tag.ToString()));
                     listBox.Items.Remove(listBox.SelectedItem);
-                    int newIndex = ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).Items.Add(plano);
-                    ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).SelectedIndex = newIndex;
                 }
             }
+            if (plano.Estado == "default") return;
+            int newIndex = ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).Items.Add(plano);
+            ((ListBox)tabPage_PlanosTlm.Controls["planosTlm_Lista" + plano.Estado]).SelectedIndex = newIndex;
         }
         private void planos_btnMover_Click(object sender, EventArgs e)
         {
